@@ -29,16 +29,28 @@
             "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
             "discount_code": "GOODR5"
           }
+        },
+        "button_apFQzm": {
+          "type": "button",
+          "settings": {
+            "button_type": "dismiss",
+            "button_text": "Button",
+            "button_link": "",
+            "button_color": "#000000",
+            "text_color": "#ffffff",
+            "font_style": "gdr-modal__button--regular"
+          }
         }
       },
       "block_order": [
         "hero_VAiyrr",
-        "description_4BQMyc"
+        "description_4BQMyc",
+        "button_apFQzm"
       ],
       "name": "goodr Modal",
       "settings": {
         "delay_time": 2,
-        "test_mode": false
+        "test_mode": true
       }
     }
   },
