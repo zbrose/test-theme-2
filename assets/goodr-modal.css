@@ -50,6 +50,9 @@
 }
 
 .gdr-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   font-family: var(--goodr-font);
   position: relative;
   background: #ffffff;
