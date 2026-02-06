@@ -1,28 +1,30 @@
-{%- assign button_type = block.settings.button_type | default: 'dismiss' -%}
+{% doc %}
+  Renders a confirm modal button that navigates to a link when clicked.
+
+  @param {object} block - The block object containing button settings
+  @param {string} block - .settings.button_text - The text displayed on the button
+  @param {string} block - .settings.button_link - The URL to navigate to
+
+  @param {string} [block.settings.button_color] - The button background color
+  @param {string} [block.settings.text_color] - The button text color
+  @param {string} [block.settings.font_style] - The font style class
+
+  @example
+  {% render 'goodr-modal-button-confirm', block: block %}
+{% enddoc %}
+
 {%- assign button_text = block.settings.button_text | default: 'Button' -%}
 {%- assign button_color = block.settings.button_color | default: '#000000' -%}
 {%- assign text_color = block.settings.text_color | default: '#FFFFFF' -%}
 
-{% if button_type == 'confirm' %}
-  <a
-    class='gdr-modal__button gdr-modal__button--confirm {{ block.settings.font_style }}'
-    href='{{ block.settings.button_link }}'
-    style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
-    {{ block.shopify_attributes }}
-  >
-    {{- button_text -}}
-  </a>
-{% else %}
-  <button
-    class='gdr-modal__button gdr-modal__button--dismiss {{ block.settings.font_style }}'
-    type='button'
-    data-modal-close
-    style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
-    {{ block.shopify_attributes }}
-  >
-    {{- button_text -}}
-  </button>
-{% endif %}
+<a
+  class='gdr-modal__button gdr-modal__button--confirm {{ block.settings.font_style }}'
+  href='{{ block.settings.button_link }}'
+  style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
+  {{ block.shopify_attributes }}
+>
+  {{- button_text -}}
+</a>
 
 {% stylesheet %}
   .gdr-modal__button {
@@ -36,6 +38,7 @@
       transform 0.3s ease;
     cursor: pointer;
     border: none;
+    display: inline-block;
   }
 
   .gdr-modal__button--confirm {
@@ -49,15 +52,6 @@
 
   .gdr-modal__button--confirm:hover {
     box-shadow: 0 0 0 #0c2340;
-  }
-
-  .gdr-modal__button--dismiss {
-    background: transparent;
-    color: #0c2340;
-    border: none;
-    text-decoration: underline;
-    font-size: 18px;
-    font-weight: 700;
   }
 
   .gdr-modal__button--bold {

@@ -1,0 +1,57 @@
+{% doc %}
+  Renders a dismiss modal button that closes the modal when clicked.
+
+  @param {object} block - The block object containing button settings
+  @param {string} block - .settings.button_text - The text displayed on the button
+
+  @param {string} [block.settings.button_color] - The button text color
+  @param {string} [block.settings.font_style] - The font style class
+
+  @example
+  {% render 'goodr-modal-button-dismiss', block: block %}
+{% enddoc %}
+
+{%- assign button_text = block.settings.button_text | default: 'Button' -%}
+{%- assign text_color = block.settings.button_color | default: '#0c2340' -%}
+
+<button
+  class='gdr-modal__button gdr-modal__button--dismiss {{ block.settings.font_style }}'
+  type='button'
+  data-modal-close
+  style='--button-text: {{ text_color }}'
+  {{ block.shopify_attributes }}
+>
+  {{- button_text -}}
+</button>
+
+{% stylesheet %}
+  .gdr-modal__button {
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .gdr-modal__button--dismiss {
+    background: transparent;
+    color: var(--button-text);
+    border: none;
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .gdr-modal__button--dismiss:hover {
+    opacity: 0.8;
+  }
+
+  .gdr-modal__button--bold {
+    font-weight: 700;
+  }
+
+  .gdr-modal__button--uppercase {
+    text-transform: uppercase;
+  }
+{% endstylesheet %}

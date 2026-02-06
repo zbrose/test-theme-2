@@ -35,7 +35,11 @@
             {%- render 'goodr-modal-block-description', block: block -%}
 
           {% when 'button' %}
-            {%- render 'goodr-modal-button', block: block -%}
+            {% if block.settings.button_type == 'confirm' %}
+              {%- render 'goodr-modal-button-confirm', block: block -%}
+            {% else %}
+              {%- render 'goodr-modal-button-dismiss', block: block -%}
+            {% endif %}
         {% endcase %}
       {% endfor %}
     </div>
