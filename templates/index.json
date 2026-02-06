@@ -15,17 +15,39 @@
     },
     "goodr_modal_tBahK3": {
       "type": "goodr-modal",
+      "blocks": {
+        "hero_VAiyrr": {
+          "type": "hero",
+          "settings": {
+            "modal_logo_alt": "Modal Logo",
+            "modal_image_alt": "Modal Image"
+          }
+        },
+        "description_4BQMyc": {
+          "type": "description",
+          "settings": {
+            "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
+            "discount_code": "GOODR5"
+          }
+        },
+        "buttons_fi3XYT": {
+          "type": "buttons",
+          "settings": {
+            "confirm_button_text": "SHOP ALL STYLES",
+            "confirm_button_link": "shopify://collections/all",
+            "decline_button_text": "NAH, I HATE DEALS"
+          }
+        }
+      },
+      "block_order": [
+        "hero_VAiyrr",
+        "description_4BQMyc",
+        "buttons_fi3XYT"
+      ],
       "name": "goodr Modal",
       "settings": {
-        "modal_logo_alt": "Modal Logo",
-        "modal_image_alt": "Modal Image",
-        "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
-        "discount_code": "GOODR5",
-        "confirm_button_text": "SHOP ALL STYLES",
-        "confirm_button_link": "shopify://collections/all",
-        "decline_button_text": "NAH, I HATE DEALS",
         "delay_time": 2,
-        "test_mode": false
+        "test_mode": true
       }
     }
   },
