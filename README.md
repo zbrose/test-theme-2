@@ -1,161 +1,122 @@
-<h1 align="center" style="position: relative;">
-  <br>
-    <img src="./assets/shoppy-x-ray.svg" alt="logo" width="200">
-  <br>
-  Shopify Skeleton Theme
-</h1>
+# The OFFICIAL goodr Modal
 
-A minimal, carefully structured Shopify theme designed to help you quickly get started. Designed with modularity, maintainability, and Shopify's best practices in mind.
+Welcome to the goodr modal (official)! This is a reuseable modal component developed by the goodr team to take hassle out of developing your own modal/pop-up from scratch.
 
-<p align="center">
-  <a href="./LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
-  <a href="./actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Shopify/skeleton-theme/actions/workflows/ci.yml/badge.svg"></a>
-</p>
-
-## Getting started
+## Installation
 
 ### Prerequisites
 
-Before starting, ensure you have the latest Shopify CLI installed:
+- Shopify development environment setup
+- Basic knowledge of Liquid templating
 
-- [Shopify CLI](https://shopify.dev/docs/api/shopify-cli) – helps you download, upload, preview themes, and streamline your workflows
+### Steps
 
-If you use VS Code:
+1. **Clone or download this repository** into your Shopify theme's `sections/` directory:
 
-- [Shopify Liquid VS Code Extension](https://shopify.dev/docs/storefronts/themes/tools/shopify-liquid-vscode) – provides syntax highlighting, linting, inline documentation, and auto-completion specifically designed for Liquid templates
+   ```bash
+   # If using git
+   git clone <repository-url>
 
-### Clone
+   # Or manually copy the files
+   cp -r goodr-modal/sections/* your-theme/sections/
+   cp -r goodr-modal/assets/* your-theme/assets/
+   ```
 
-Clone this repository using Git or Shopify CLI:
+2. **Add the modal section to your theme** by including it in your Liquid template:
 
-```bash
-git clone git@github.com:Shopify/skeleton-theme.git
-# or
-shopify theme init
+   ```liquid
+   {% section 'goodr-modal' %}
+   ```
+
+3. **Configure the modal** using Shopify Theme Editor or by editing the section's schema settings
+
+4. **Test locally** using Shopify CLI:
+   ```bash
+   shopify theme dev
+   ```
+
+## Project Structure
+
 ```
-
-### Preview
-
-Preview this theme using Shopify CLI:
-
-```bash
-shopify theme dev
-```
-
-## Theme architecture
-
-```bash
 .
-├── assets          # Stores static assets (CSS, JS, images, fonts, etc.)
-├── blocks          # Reusable, nestable, customizable UI components
-├── config          # Global theme settings and customization options
-├── layout          # Top-level wrappers for pages (layout templates)
-├── locales         # Translation files for theme internationalization
-├── sections        # Modular full-width page components
-├── snippets        # Reusable Liquid code or HTML fragments
-└── templates       # Templates combining sections to define page structures
+├── README.md                # This file
+├── sections/
+│   └── goodr-modal.liquid  # Main Liquid component
+└── assets/
+    ├── goodr-modal.css      # Styling
+    └── goodr-modal.js       # Interactivity
 ```
 
-To learn more, refer to the [theme architecture documentation](https://shopify.dev/docs/storefronts/themes/architecture).
+## Usage
 
-### Templates
+### Basic Implementation
 
-[Templates](https://shopify.dev/docs/storefronts/themes/architecture/templates#template-types) control what's rendered on each type of page in a theme.
+Add the section to your theme and configure via the Shopify Theme Editor or directly in your template:
 
-The Skeleton Theme scaffolds [JSON templates](https://shopify.dev/docs/storefronts/themes/architecture/templates/json-templates) to make it easy for merchants to customize their store.
+```liquid
+{% section 'goodr-modal' %}
+```
 
-None of the template types are required, and not all of them are included in the Skeleton Theme. Refer to the [template types reference](https://shopify.dev/docs/storefronts/themes/architecture/templates#template-types) for a full list.
+### Customization
 
-### Sections
+Refer to the schema settings in [sections/goodr-modal.liquid](sections/goodr-modal.liquid) to customize:
 
-[Sections](https://shopify.dev/docs/storefronts/themes/architecture/sections) are Liquid files that allow you to create reusable modules of content that can be customized by merchants. They can also include blocks which allow merchants to add, remove, and reorder content within a section.
+- Modal title and content
+- Trigger button text
+- Styling and animations
+- Close behavior
 
-Sections are made customizable by including a `{% schema %}` in the body. For more information, refer to the [section schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema).
+## Tradeoffs & Assumptions
 
-### Blocks
+### Assumptions
 
-[Blocks](https://shopify.dev/docs/storefronts/themes/architecture/blocks) let developers create flexible layouts by breaking down sections into smaller, reusable pieces of Liquid. Each block has its own set of settings, and can be added, removed, and reordered within a section.
+- **Single modal per page**: This component is optimized for a single modal instance per page load
+- **Modern browser support**: Uses ES6+ JavaScript; targets browsers with ES2015+ support
+- **Liquid templating**: Assumes usage within a Shopify theme with Liquid templating engine
+- **CSS scope**: Assumes no conflicting global CSS selectors
 
-Blocks are made customizable by including a `{% schema %}` in the body. For more information, refer to the [block schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/blocks/theme-blocks/schema).
+### Tradeoffs
 
-## Schemas
+- **No framework dependencies**: Built with vanilla JavaScript to minimize bundle size, but lacks some advanced state management features
+- **Limited animation options**: Pre-defined animations to keep CSS lightweight; custom animations require CSS knowledge
+- **Accessibility basics**: Includes ARIA attributes but may need enhancement for complex use cases
+- **Browser compatibility**: Does not support Internet Explorer 11; targets modern browsers only
+- **Responsive design**: Mobile-first approach may require theme-specific adjustments
 
-When developing components defined by schema settings, we recommend these guidelines to simplify your code:
+## Future Improvements
 
-- **Single property settings**: For settings that correspond to a single CSS property, use CSS variables:
+### High Priority
 
-  ```liquid
-  <div class="collection" style="--gap: {{ block.settings.gap }}px">
-    ...
-  </div>
+- [ ] **Accessibility enhancements**: Full WCAG 2.1 AA compliance, improved keyboard navigation
+- [ ] **Unit tests**: Add test coverage for JavaScript functionality
+- [ ] **Performance optimization**: Lazy load modal assets until first interaction
 
-  {% stylesheet %}
-    .collection {
-      gap: var(--gap);
-    }
-  {% endstylesheet %}
+### Medium Priority
 
-  {% schema %}
-  {
-    "settings": [{
-      "type": "range",
-      "label": "gap",
-      "id": "gap",
-      "min": 0,
-      "max": 100,
-      "unit": "px",
-      "default": 0,
-    }]
-  }
-  {% endschema %}
-  ```
+- [ ] **Animation presets**: Expand animation library with fade, slide, scale variants
+- [ ] **TypeScript migration**: Add type safety to JavaScript code
+- [ ] **Configuration API**: Expose JavaScript API for programmatic control
+- [ ] **Theme customization**: Support Shopify Theme Settings for font, color customization
 
-- **Multiple property settings**: For settings that control multiple CSS properties, use CSS classes:
+### Low Priority
 
-  ```liquid
-  <div class="collection {{ block.settings.layout }}">
-    ...
-  </div>
-
-  {% stylesheet %}
-    .collection--full-width {
-      /* multiple styles */
-    }
-    .collection--narrow {
-      /* multiple styles */
-    }
-  {% endstylesheet %}
-
-  {% schema %}
-  {
-    "settings": [{
-      "type": "select",
-      "id": "layout",
-      "label": "layout",
-      "values": [
-        { "value": "collection--full-width", "label": "t:options.full" },
-        { "value": "collection--narrow", "label": "t:options.narrow" }
-      ]
-    }]
-  }
-  {% endschema %}
-  ```
-
-## CSS & JavaScript
-
-For CSS and JavaScript, we recommend using the [`{% stylesheet %}`](https://shopify.dev/docs/api/liquid/tags#stylesheet) and [`{% javascript %}`](https://shopify.dev/docs/api/liquid/tags/javascript) tags. They can be included multiple times, but the code will only appear once.
-
-### `critical.css`
-
-The Skeleton Theme explicitly separates essential CSS necessary for every page into a dedicated `critical.css` file.
+- [ ] **Internationalization (i18n)**: Multi-language label support
+- [ ] **Analytics integration**: Built-in event tracking for modal interactions
+- [ ] **Advanced styling**: CSS-in-JS or SCSS preprocessing support
+- [ ] **Mobile gestures**: Swipe-to-close and gesture detection
 
 ## Contributing
 
-We're excited for your contributions to the Skeleton Theme! This repository aims to remain as lean, lightweight, and fundamental as possible, and we kindly ask your contributions to align with this intention.
+To contribute improvements:
 
-Visit our [CONTRIBUTING.md](./CONTRIBUTING.md) for a detailed overview of our process, guidelines, and recommendations.
+1. Create a feature branch
+2. Test thoroughly in a Shopify development store
+3. Submit a pull request with a detailed description
 
 ## License
 
-Skeleton Theme is open-sourced under the [MIT](./LICENSE.md) License.
-# test-theme-2
+© goodr. All rights reserved.
+
+## Support
+
+For issues or questions, please refer to the Shopify Theme Development documentation or contact the development team.

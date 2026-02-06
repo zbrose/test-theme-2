@@ -1,14 +1,28 @@
 {{ 'goodr-modal.css' | asset_url | stylesheet_tag }}
 
-<div class="gdr-modal {% if section.settings.test_mode %}gdr-modal--test-mode{% endif %}" 
-   data-section-id="{{ section.id }}" 
-   data-delay="{{ section.settings.delay_time }}">
-  <div class="gdr-modal__overlay" aria-hidden="true">
-    <div class="gdr-modal__content" role="dialog" aria-modal="true">
-
-      {%- comment -%} Close Button {%- endcomment -%}
-      <button class="gdr-modal__close-btn" aria-label="Close modal">
-        <img src="{{ 'x.svg' | asset_url }}" class="gdr-modal__close-icon" alt="" loading="eager" width="20" height="20">
+<div
+  class='gdr-modal {% if section.settings.test_mode %}gdr-modal--test-mode{% endif %}'
+  data-section-id='{{ section.id }}'
+  data-delay='{{ section.settings.delay_time }}'
+  role='region'
+>
+  <div class='gdr-modal__overlay' aria-hidden='true' data-modal-overlay>
+    <div
+      class='gdr-modal__content'
+      role='dialog'
+      aria-modal='true'
+      aria-labelledby='modal-title'
+      aria-describedby='modal-description'
+    >
+      <button class='gdr-modal__close-btn' aria-label='Close modal' data-modal-close>
+        <img
+          src='{{ 'x.svg' | asset_url }}'
+          class='gdr-modal__close-icon'
+          alt=''
+          loading='eager'
+          width='20'
+          height='20'
+        >
       </button>
 
       {%- comment -%} Render Dynamic Blocks {%- endcomment -%}
@@ -24,12 +38,11 @@
             {%- render 'goodr-modal-block-buttons', block: block -%}
         {% endcase %}
       {% endfor %}
-
     </div>
   </div>
 </div>
 
-<script src="{{ 'goodr-modal.js' | asset_url }}" defer></script>
+<script src='{{ 'goodr-modal.js' | asset_url }}' defer></script>
 
 {% schema %}
 {
