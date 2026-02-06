@@ -3,7 +3,10 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign discount_span = '<span class="gdr-modal__discount-code">' | append: block.settings.discount_code | append: '</span>'
+  assign code_style = 'color: ' | append: block.settings.code_text_color | append: '; background-color: ' | append: block.settings.code_bg_color | append: ';'
+
+  assign discount_span = '<span class="gdr-modal__discount-code" style="' | append: code_style | append: '">' | append: block.settings.discount_code | append: '</span>'
+
   assign description_text = block.settings.modal_description | default: 'USE CODE [code] FOR $5 OFF YOUR FIRST ORDER'
   assign formatted_description = description_text | replace: '[code]', discount_span
 -%}
