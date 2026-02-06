@@ -1,0 +1,83 @@
+{%- assign button_type = block.settings.button_type | default: 'dismiss' -%}
+{%- assign button_text = block.settings.button_text | default: 'Button' -%}
+{%- assign button_color = block.settings.button_color | default: '#000000' -%}
+{%- assign text_color = block.settings.text_color | default: '#FFFFFF' -%}
+
+{% if button_type == 'confirm' %}
+  <a
+    class='gdr-modal__button gdr-modal__button--confirm {{ block.settings.font_style }}'
+    href='{{ block.settings.button_link }}'
+    style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
+    {{ block.shopify_attributes }}
+  >
+    {{ button_text }}
+  </a>
+{% else %}
+  <button
+    class='gdr-modal__button gdr-modal__button--dismiss {{ block.settings.font_style }}'
+    type='button'
+    data-modal-close
+    style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
+    {{ block.shopify_attributes }}
+  >
+    {{ button_text }}
+  </button>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Modal Button",
+  "settings": [
+    {
+      "type": "select",
+      "id": "button_type",
+      "label": "Button Type",
+      "options": [
+        { "value": "confirm", "label": "Confirm (Link)" },
+        { "value": "dismiss", "label": "Dismiss (Close Modal)" }
+      ],
+      "default": "dismiss"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Button"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "info": "Only used for Confirm button type"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "font_style",
+      "label": "Font Style",
+      "options": [
+        { "value": "gdr-modal__button--regular", "label": "Regular" },
+        { "value": "gdr-modal__button--bold", "label": "Bold" },
+        { "value": "gdr-modal__button--uppercase", "label": "Uppercase" }
+      ],
+      "default": "gdr-modal__button--regular"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Modal Button"
+    }
+  ]
+}
+{% endschema %}

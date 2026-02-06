@@ -34,8 +34,8 @@
           {% when 'description' %}
             {%- render 'goodr-modal-block-description', block: block -%}
 
-          {% when 'buttons' %}
-            {%- render 'goodr-modal-block-buttons', block: block -%}
+          {% when 'button' %}
+            {%- render 'goodr-modal-button', block: block -%}
         {% endcase %}
       {% endfor %}
     </div>
@@ -47,7 +47,6 @@
 {% schema %}
 {
   "name": "goodr Modal",
-  "max_blocks": 3,
   "settings": [
     {
       "type": "header",
@@ -126,26 +125,53 @@
       ]
     },
     {
-      "type": "buttons",
-      "name": "Button Group",
+      "type": "button",
+      "name": "Button",
       "settings": [
         {
+          "type": "select",
+          "id": "button_type",
+          "label": "Button Type",
+          "options": [
+            { "value": "confirm", "label": "Confirm (Link)" },
+            { "value": "dismiss", "label": "Dismiss (Close Modal)" }
+          ],
+          "default": "dismiss"
+        },
+        {
           "type": "text",
-          "id": "confirm_button_text",
-          "label": "Confirm Button Text",
-          "default": "SHOP ALL STYLES"
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Button"
         },
         {
           "type": "url",
-          "id": "confirm_button_link",
-          "label": "Confirm Button Link",
-          "default": "/collections/all"
+          "id": "button_link",
+          "label": "Button Link",
+          "info": "Only used for Confirm button type"
         },
         {
-          "type": "text",
-          "id": "decline_button_text",
-          "label": "Decline Button Text",
-          "default": "NAH, I HATE DEALS"
+          "type": "color",
+          "id": "button_color",
+          "label": "Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "select",
+          "id": "font_style",
+          "label": "Font Style",
+          "options": [
+            { "value": "gdr-modal__button--regular", "label": "Regular" },
+            { "value": "gdr-modal__button--bold", "label": "Bold" },
+            { "value": "gdr-modal__button--uppercase", "label": "Uppercase" }
+          ],
+          "default": "gdr-modal__button--regular"
         }
       ]
     }
@@ -163,7 +189,19 @@
           "type": "description"
         },
         {
-          "type": "buttons"
+          "type": "button",
+          "settings": {
+            "button_type": "confirm",
+            "button_text": "SHOP ALL STYLES",
+            "button_link": "/collections/all"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_type": "dismiss",
+            "button_text": "NAH, I HATE DEALS"
+          }
         }
       ]
     }
