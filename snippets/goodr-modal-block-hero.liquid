@@ -1,0 +1,26 @@
+{%- comment -%}
+Hero Block: Displays logo and background images (desktop/mobile)
+{%- endcomment -%}
+
+<div class="gdr-modal__hero" {{ block.shopify_attributes }}>
+  {%- liquid
+    assign logo_alt = block.settings.modal_logo.alt | default: block.settings.modal_logo_alt
+    assign main_alt = block.settings.modal_image.alt | default: block.settings.modal_image_alt
+  -%}
+
+  {%- if block.settings.modal_logo -%}
+    {{ block.settings.modal_logo | image_url: width: 500 | image_tag: class: 'gdr-modal__logo', alt: logo_alt, loading: 'eager' }}
+  {%- endif -%}
+
+  {%- comment -%} Desktop Background {%- endcomment -%}
+  {%- if block.settings.modal_image -%}
+    {{ block.settings.modal_image | image_url: width: 1000 | image_tag: class: 'gdr-modal__image gdr-modal__image--desktop', alt: main_alt, loading: 'eager', widths: '484, 748, 1000' }}
+  {%- endif -%}
+
+  {%- comment -%} Mobile Background {%- endcomment -%}
+  {%- if block.settings.modal_image_mobile -%}
+    {{ block.settings.modal_image_mobile | image_url: width: 600 | image_tag: class: 'gdr-modal__image gdr-modal__image--mobile', alt: main_alt, loading: 'eager', widths: '326, 600' }}
+  {%- elsif block.settings.modal_image -%}
+    {{ block.settings.modal_image | image_url: width: 600 | image_tag: class: 'gdr-modal__image gdr-modal__image--mobile', alt: main_alt, loading: 'eager' }}
+  {%- endif -%}
+</div>

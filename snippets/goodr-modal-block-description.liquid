@@ -1,0 +1,13 @@
+{%- comment -%}
+Description Block: Displays description text with optional discount code
+{%- endcomment -%}
+
+{%- liquid
+  assign discount_span = '<span class="gdr-modal__discount-code">' | append: block.settings.discount_code | append: '</span>'
+  assign description_text = block.settings.modal_description | default: "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER"
+  assign formatted_description = description_text | replace: '[code]', discount_span
+-%}
+
+{%- if formatted_description != blank -%}
+  <p class="gdr-modal__description" {{ block.shopify_attributes }}>{{ formatted_description }}</p>
+{%- endif -%}
