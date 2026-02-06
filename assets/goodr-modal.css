@@ -81,7 +81,7 @@
 /* 3. Hero & Images (The Swap) */
 .gdr-modal__hero {
   position: relative;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .gdr-modal__logo {
@@ -112,7 +112,7 @@
   font-weight: 700;
   font-size: 24px;
   color: var(--modal-navy);
-
+  /* margin: 1rem 0 2rem 0; */
 }
 
 .gdr-modal__discount-code {
