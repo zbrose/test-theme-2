@@ -12,9 +12,25 @@
     "main": {
       "type": "hello-world",
       "settings": {}
+    },
+    "modal_section_WbKX8R": {
+      "type": "modal-section",
+      "name": "Modal Popup",
+      "settings": {
+        "modal_logo_alt": "Modal Logo",
+        "modal_image_alt": "Modal Image",
+        "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
+        "discount_code": "GOODR5",
+        "confirm_button_text": "SHOP ALL STYLES",
+        "confirm_button_link": "shopify://collections/all",
+        "decline_button_text": "NAH, I HATE DEALS",
+        "delay_time": 2,
+        "test_mode": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "modal_section_WbKX8R"
   ]
 }
