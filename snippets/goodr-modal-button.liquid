@@ -10,7 +10,7 @@
     style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
     {{ block.shopify_attributes }}
   >
-    {{ button_text }}
+    {{- button_text -}}
   </a>
 {% else %}
   <button
@@ -20,9 +20,54 @@
     style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
     {{ block.shopify_attributes }}
   >
-    {{ button_text }}
+    {{- button_text -}}
   </button>
 {% endif %}
+
+{% stylesheet %}
+  .gdr-modal__button {
+    padding: 12px 0;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .gdr-modal__button--confirm {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid #0c2340;
+    box-shadow: -4px 4px #0c2340;
+    text-shadow: -2.75px 2.75px #0c2340;
+    -webkit-text-stroke: 1px #0c2340;
+  }
+
+  .gdr-modal__button--confirm:hover {
+    box-shadow: 0 0 0 #0c2340;
+  }
+
+  .gdr-modal__button--dismiss {
+    background: transparent;
+    color: #0c2340;
+    border: none;
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .gdr-modal__button--bold {
+    font-weight: 700;
+  }
+
+  .gdr-modal__button--uppercase {
+    text-transform: uppercase;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
