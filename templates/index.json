@@ -26,7 +26,7 @@
         "confirm_button_link": "shopify://collections/all",
         "delay_time": 2,
         "discount_code": "GOODR5",
-        "test_mode": false
+        "test_mode": true
       }
     }
   },
