@@ -63,7 +63,7 @@
       "name": "goodr Modal",
       "settings": {
         "delay_time": 1,
-        "test_mode": true
+        "test_mode": false
       }
     }
   },
