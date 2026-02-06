@@ -1,0 +1,1 @@
+/Users/zachbrose/Desktop/shopify-projects/test-theme-2/AGENTS.md
