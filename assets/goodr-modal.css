@@ -148,6 +148,14 @@
 
 /* 6. Mobile Overrides */
 @media screen and (max-width: 600px) {
+  .gdr-modal__content {
+    gap: 1rem;
+  }
+
+  .gdr-modal__logo {
+    width: 150px;
+  }
+
   .gdr-modal__image--mobile {
     display: block;
   }
@@ -158,13 +166,12 @@
   .gdr-modal__content {
     padding: 35px 37px;
     max-width: 326px;
-    max-height: 550px;
     --goodr-shadow: -2.75px 2.75px var(--modal-navy);
   }
 
   .gdr-modal__hero {
-    height: 342px;
-    width: 252px;
+    max-height: 342px;
+    max-width: 252px;
   }
 
   .gdr-modal__close-btn {
@@ -177,6 +184,5 @@
   .gdr-modal__description,
   .gdr-modal__discount-code {
     font-size: 18px;
-    margin: 0.5rem 0 1rem 0;
   }
 }
