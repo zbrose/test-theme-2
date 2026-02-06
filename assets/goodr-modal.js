@@ -3,7 +3,7 @@ class GoodrPopup {
     this.container = container;
     this.overlay = container.querySelector(".gdr-modal__overlay");
     this.closeBtn = container.querySelector(".gdr-modal__close-btn");
-    this.declineBtn = container.querySelector(".gdr-modal__button--decline");
+    this.dismissBtn = container.querySelector(".gdr-modal__button--dismiss");
     this.confirmBtn = container.querySelector(".gdr-modal__button--confirm");
     this.storageKey = `goodr_popup_seen_${container.dataset.sectionId}`;
     this.delay = parseInt(container.dataset.delay) * 1000 || 3000;
@@ -20,8 +20,8 @@ class GoodrPopup {
 
     this.closeBtn.addEventListener("click", () => this.close());
 
-    if (this.declineBtn) {
-      this.declineBtn.addEventListener("click", () => this.close());
+    if (this.dismissBtn) {
+      this.dismissBtn.addEventListener("click", () => this.close());
     }
 
     if (this.confirmBtn) {
@@ -45,10 +45,8 @@ class GoodrPopup {
   }
 
   close() {
-    // Add closing animation class
     this.container.classList.add("gdr-modal--closing");
 
-    // Wait for animation to complete before hiding
     setTimeout(() => {
       this.container.classList.remove(
         "gdr-modal--active",
@@ -57,7 +55,7 @@ class GoodrPopup {
       this.overlay.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       sessionStorage.setItem(this.storageKey, "true");
-    }, 400); // Match CSS transition duration
+    }, 400);
   }
 
   handleConfirm(e) {
