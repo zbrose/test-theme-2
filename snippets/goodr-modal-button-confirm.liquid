@@ -5,7 +5,8 @@
 <a
   class='gdr-modal__button gdr-modal__button--confirm {{ block.settings.font_style }}'
   href='{{ block.settings.button_link }}'
-  style='background-color: {{ button_color }}; color: {{ text_color }};'
+  {% comment %} Pass colors as variables so CSS can transition them {% endcomment %}
+  style='--btn-bg: {{ button_color }}; --btn-text: {{ text_color }};'
   {{ block.shopify_attributes }}
 >
   {{- button_text -}}
@@ -14,6 +15,10 @@
 {% style %}
   .gdr-modal__button--confirm {
     --gdr-navy: #0c2340;
+
+    {% comment %} Use the variables passed from the inline style {% endcomment %}
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
 
     padding: 12px 0;
     border: 2px solid var(--gdr-navy);
@@ -24,30 +29,20 @@
     text-decoration: none;
     text-shadow: -2.75px 2.75px var(--gdr-navy);
     -webkit-text-stroke: 1px var(--gdr-navy);
+
+    {% comment %} Ensure background-color is in the transition list {% endcomment %}
     transition:
       box-shadow 0.3s ease,
-      transform 0.3s ease;
+      transform 0.3s ease,
+      background-color 0.3s ease;
     cursor: pointer;
     display: inline-block;
     width: 100%;
   }
 
   .gdr-modal__button--confirm:hover {
+    {% comment %} Now this will work because it's not fighting an inline background-color {% endcomment %}
     box-shadow: 0 0 0 var(--gdr-navy);
-  }
-
-  .gdr-modal__button--confirm.gdr-modal__button--bold {
-    font-weight: 700;
-  }
-
-  .gdr-modal__button--confirm.gdr-modal__button--uppercase {
-    text-transform: uppercase;
-  }
-
-  @media screen and (max-width: 600px) {
-    .gdr-modal__button--confirm {
-      font-size: 14px;
-      padding: 8px 0;
-    }
+    transform: translateY(2px);
   }
 {% endstyle %}
