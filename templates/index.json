@@ -26,8 +26,9 @@
         "description_4BQMyc": {
           "type": "description",
           "settings": {
-            "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
-            "discount_code": "GOODR5"
+            "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDERasdfhakshdfkhaskdfhaiusdhifuahskdjfkdshakjsdhf",
+            "discount_code": "",
+            "code_text_color": "#e06287"
           }
         },
         "button_apFQzm": {
@@ -62,7 +63,7 @@
       "name": "goodr Modal",
       "settings": {
         "delay_time": 1,
-        "test_mode": false
+        "test_mode": true
       }
     }
   },
