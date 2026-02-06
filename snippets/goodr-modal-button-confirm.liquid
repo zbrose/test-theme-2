@@ -20,7 +20,7 @@
 <a
   class='gdr-modal__button gdr-modal__button--confirm {{ block.settings.font_style }}'
   href='{{ block.settings.button_link }}'
-  style='--button-bg: {{ button_color }}; --button-text: {{ text_color }}'
+  style='background-color: {{ button_color }}; color: {{ text_color }};'
   {{ block.shopify_attributes }}
 >
   {{- button_text -}}
@@ -29,25 +29,24 @@
 {% stylesheet %}
   .gdr-modal__button--confirm {
     padding: 12px 0;
-    background-color: var(--button-bg, #ede939);
-    border: 2px solid var(--modal-navy, #0c2340);
+    border: 2px solid #0c2340;
     border-radius: 25px;
-    box-shadow: -4px 4px var(--modal-navy, #0c2340);
-    color: var(--button-text, white);
+    box-shadow: -4px 4px #0c2340;
     font-weight: 700;
     font-size: 18px;
     text-decoration: none;
-    text-shadow: -2.75px 2.75px var(--modal-navy, #0c2340);
-    -webkit-text-stroke: 1px var(--modal-navy, #0c2340);
+    text-shadow: -2.75px 2.75px #0c2340;
+    -webkit-text-stroke: 1px #0c2340;
     transition:
       box-shadow 0.3s ease,
       transform 0.3s ease;
     cursor: pointer;
     display: inline-block;
+    width: 100%;
   }
 
   .gdr-modal__button--confirm:hover {
-    box-shadow: 0 0 0 var(--modal-navy, #0c2340);
+    box-shadow: 0 0 0 #0c2340;
   }
 
   .gdr-modal__button--confirm.gdr-modal__button--bold {
