@@ -9,7 +9,7 @@
   assign discount_span = '<span class="gdr-modal__discount-code" style="' | append: code_style | append: '">' | append: limited_code | append: '</span>'
 
   assign default_text = 'USE CODE [code] FOR $5 OFF YOUR FIRST ORDER'
-  assign description_text = block.settings.modal_description | default: default_text | truncate: 120
+  assign description_text = block.settings.modal_description | default: default_text | truncate: 50
 
   assign formatted_description = description_text | replace: '[code]', discount_span
 -%}
