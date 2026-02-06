@@ -1,0 +1,12 @@
+{%- comment -%}
+Button Block: Displays confirm and decline buttons
+{%- endcomment -%}
+
+<div class="gdr-modal__button-group" {{ block.shopify_attributes }}>
+  <a class="gdr-modal__button--confirm" href="{{ block.settings.confirm_button_link }}">
+    {{ block.settings.confirm_button_text | default: 'SHOP NOW' }}
+  </a>
+  <button class="gdr-modal__button--decline" type="button">
+    {{ block.settings.decline_button_text | default: 'No Thanks' }}
+  </button>
+</div>
