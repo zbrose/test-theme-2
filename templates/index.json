@@ -29,25 +29,16 @@
             "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
             "discount_code": "GOODR5"
           }
-        },
-        "buttons_fi3XYT": {
-          "type": "buttons",
-          "settings": {
-            "confirm_button_text": "SHOP ALL STYLES",
-            "confirm_button_link": "shopify://collections/all",
-            "decline_button_text": "NAH, I HATE DEALS"
-          }
         }
       },
       "block_order": [
         "hero_VAiyrr",
-        "description_4BQMyc",
-        "buttons_fi3XYT"
+        "description_4BQMyc"
       ],
       "name": "goodr Modal",
       "settings": {
         "delay_time": 2,
-        "test_mode": true
+        "test_mode": false
       }
     }
   },
