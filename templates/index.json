@@ -33,19 +33,31 @@
         "button_apFQzm": {
           "type": "button",
           "settings": {
-            "button_type": "dismiss",
-            "button_text": "Button",
-            "button_link": "",
-            "button_color": "#000000",
+            "button_type": "confirm",
+            "button_text": "SHOP ALL STYLES",
+            "button_link": "shopify://collections",
+            "button_color": "#ede939",
             "text_color": "#ffffff",
             "font_style": "gdr-modal__button--regular"
+          }
+        },
+        "button_V99kH6": {
+          "type": "button",
+          "settings": {
+            "button_type": "dismiss",
+            "button_text": "nah, i hate deals",
+            "button_link": "",
+            "button_color": "#0c2340",
+            "text_color": "#ffffff",
+            "font_style": "gdr-modal__button--uppercase"
           }
         }
       },
       "block_order": [
         "hero_VAiyrr",
         "description_4BQMyc",
-        "button_apFQzm"
+        "button_apFQzm",
+        "button_V99kH6"
       ],
       "name": "goodr Modal",
       "settings": {
