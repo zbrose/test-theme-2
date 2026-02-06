@@ -146,16 +146,6 @@
   gap: 1rem;
 }
 
-.gdr-modal__button--decline {
-  color: var(--modal-navy);
-  background: transparent;
-  border: none;
-  text-decoration: underline;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
 /* 6. Mobile Overrides */
 @media screen and (max-width: 600px) {
   .gdr-modal__image--mobile {
@@ -188,9 +178,5 @@
   .gdr-modal__discount-code {
     font-size: 18px;
     margin: 0.5rem 0 1rem 0;
-  }
-
-  .gdr-modal__button--decline {
-    font-size: 14px;
   }
 }

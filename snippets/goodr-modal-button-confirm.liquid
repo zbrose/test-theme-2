@@ -5,44 +5,47 @@
 <a
   class='gdr-modal__button gdr-modal__button--confirm {{ block.settings.font_style }}'
   href='{{ block.settings.button_link }}'
-  {% comment %} Pass colors as variables so CSS can transition them {% endcomment %}
-  style='--btn-bg: {{ button_color }}; --btn-text: {{ text_color }};'
+  style='background-color: {{ button_color }}; color: {{ text_color }};'
   {{ block.shopify_attributes }}
 >
   {{- button_text -}}
 </a>
 
-{% style %}
+{% stylesheet %}
   .gdr-modal__button--confirm {
-    --gdr-navy: #0c2340;
-
-    {% comment %} Use the variables passed from the inline style {% endcomment %}
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-
     padding: 12px 0;
-    border: 2px solid var(--gdr-navy);
+    border: 2px solid #0c2340;
     border-radius: 25px;
-    box-shadow: -4px 4px var(--gdr-navy);
+    box-shadow: -4px 4px #0c2340;
     font-weight: 700;
     font-size: 18px;
     text-decoration: none;
-    text-shadow: -2.75px 2.75px var(--gdr-navy);
-    -webkit-text-stroke: 1px var(--gdr-navy);
-
-    {% comment %} Ensure background-color is in the transition list {% endcomment %}
+    text-shadow: -2.75px 2.75px #0c2340;
+    -webkit-text-stroke: 1px #0c2340;
     transition:
       box-shadow 0.3s ease,
-      transform 0.3s ease,
-      background-color 0.3s ease;
+      transform 0.3s ease;
     cursor: pointer;
     display: inline-block;
     width: 100%;
   }
 
   .gdr-modal__button--confirm:hover {
-    {% comment %} Now this will work because it's not fighting an inline background-color {% endcomment %}
-    box-shadow: 0 0 0 var(--gdr-navy);
-    transform: translateY(2px);
+    box-shadow: 0 0 0 #0c2340;
   }
-{% endstyle %}
+
+  .gdr-modal__button--confirm.gdr-modal__button--bold {
+    font-weight: 700;
+  }
+
+  .gdr-modal__button--confirm.gdr-modal__button--uppercase {
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 600px) {
+    .gdr-modal__button--confirm {
+      font-size: 14px;
+      padding: 8px 0;
+    }
+  }
+{% endstylesheet %}
