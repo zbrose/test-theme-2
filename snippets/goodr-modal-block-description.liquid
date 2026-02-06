@@ -3,13 +3,37 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign code_style = 'color: ' | append: block.settings.code_text_color | append: '; background-color: ' | append: block.settings.code_bg_color | append: ';'
+  assign code_limit = 10
+  assign desc_limit = 60
 
-  assign discount_span = '<span class="gdr-modal__discount-code" style="' | append: code_style | append: '">' | append: block.settings.discount_code | append: '</span>'
+  assign raw_code = block.settings.discount_code
+  assign code_length = raw_code | size
+  assign limited_code = raw_code | slice: 0, code_limit
 
   assign description_text = block.settings.modal_description | default: 'USE CODE [code] FOR $5 OFF YOUR FIRST ORDER'
+  assign desc_length = description_text | size
+
+  assign code_style = 'color: ' | append: block.settings.code_text_color | append: '; background-color: ' | append: block.settings.code_bg_color | append: ';'
+  assign discount_span = '<span class="gdr-modal__discount-code" style="' | append: code_style | append: '">' | append: limited_code | append: '</span>'
   assign formatted_description = description_text | replace: '[code]', discount_span
 -%}
+
+{%- comment -%} Editor-only Warnings {%- endcomment -%}
+{%- if request.design_mode -%}
+  {%- if code_length > code_limit or desc_length > desc_limit -%}
+    <div style='color: #d0021b; background: #fff5f5; padding: 10px; border: 1px solid #d0021b; border-radius: 4px; margin-bottom: 15px; font-size: 12px;'>
+      <strong>⚠️ Validation Errors:</strong>
+      <ul style='margin: 5px 0 0 15px; padding: 0;'>
+        {%- if code_length > code_limit -%}
+          <li>Discount Code is too long ({{ code_length }}/{{ code_limit }} chars).</li>
+        {%- endif -%}
+        {%- if desc_length > desc_limit -%}
+          <li>Description is too long ({{ desc_length }}/{{ desc_limit }} chars).</li>
+        {%- endif -%}
+      </ul>
+    </div>
+  {%- endif -%}
+{%- endif -%}
 
 {%- if formatted_description != blank -%}
   <p class='gdr-modal__description' {{ block.shopify_attributes }}>{{ formatted_description }}</p>
