@@ -12,6 +12,8 @@
   class='gdr-modal__button gdr-modal__button--confirm {{ block.settings.font_style }}'
   href='{{ block.settings.button_link }}'
   style='background-color: {{ button_color }}; color: {{ text_color }};'
+  data-modal-button='confirm'
+  data-button-text='{{ button_text | escape }}'
   {{ block.shopify_attributes }}
 >
   {{- button_text -}}
@@ -58,3 +60,23 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('[data-modal-button="confirm"]').forEach((button) => {
+    button.addEventListener('click', function () {
+      const buttonText = this.getAttribute('data-button-text');
+      const href = this.href;
+
+      // TODO: Integrate with analytics service
+      // Examples:
+      // - Google Analytics 4: gtag('event', 'modal_confirm', { button_text: buttonText, destination_url: href })
+      // - Segment: analytics.track('modal_confirm', { button_text: buttonText, destination_url: href })
+      // - Custom webhook: fetch('/api/analytics', { method: 'POST', body: JSON.stringify({event: 'modal_confirm', ...}) })
+
+      console.log('Analytics Event: modal_confirm', {
+        button_text: buttonText,
+        destination_url: href,
+      });
+    });
+  });
+{% endjavascript %}

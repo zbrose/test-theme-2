@@ -5,6 +5,8 @@
   class='gdr-modal__button gdr-modal__button--dismiss {{ block.settings.font_style }}'
   type='button'
   data-modal-close
+  data-modal-button='dismiss'
+  data-button-text='{{ button_text | escape }}'
   style='color: {{ text_color }};'
   {{ block.shopify_attributes }}
 >
@@ -43,3 +45,21 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('[data-modal-button="dismiss"]').forEach((button) => {
+    button.addEventListener('click', function () {
+      const buttonText = this.getAttribute('data-button-text');
+
+      // TODO: Integrate with analytics service
+      // Examples:
+      // - Google Analytics 4: gtag('event', 'modal_dismiss_button', { button_text: buttonText })
+      // - Segment: analytics.track('modal_dismiss_button', { button_text: buttonText })
+      // - Custom webhook: fetch('/api/analytics', { method: 'POST', body: JSON.stringify({event: 'modal_dismiss_button', ...}) })
+
+      console.log('Analytics Event: modal_dismiss_button', {
+        button_text: buttonText,
+      });
+    });
+  });
+{% endjavascript %}

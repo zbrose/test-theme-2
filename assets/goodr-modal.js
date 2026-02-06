@@ -3,30 +3,34 @@ class GoodrPopup {
     this.container = container;
     this.overlay = container.querySelector(".gdr-modal__overlay");
     this.closeBtn = container.querySelector(".gdr-modal__close-btn");
-    this.dismissBtn = container.querySelector(".gdr-modal__button--dismiss");
-    this.confirmBtn = container.querySelector(".gdr-modal__button--confirm");
-    this.storageKey = `goodr_popup_seen_${container.dataset.sectionId}`;
-    this.delay = parseInt(container.dataset.delay) * 1000 || 3000;
-
-    this.init();
+    this.dismissButtons = container.querySelectorAll("[data-modal-close]");
+    this.sectionId = container.getAttribute("data-section-id");
   }
 
   init() {
-    if (sessionStorage.getItem(this.storageKey)) return;
+    const delayTime =
+      parseInt(this.container.getAttribute("data-delay")) * 1000;
+    const isTestMode = this.container.classList.contains(
+      "gdr-modal--test-mode",
+    );
+    const isDismissed = sessionStorage.getItem(
+      `goodr-modal-dismissed-${this.sectionId}`,
+    );
 
-    setTimeout(() => {
-      this.show();
-    }, this.delay);
+    if (!isDismissed || isTestMode) {
+      setTimeout(() => this.show(), delayTime);
+    }
 
     this.closeBtn.addEventListener("click", () => this.close());
 
-    if (this.dismissBtn) {
-      this.dismissBtn.addEventListener("click", () => this.close());
-    }
+    // Handle dismiss buttons
+    this.dismissButtons.forEach((button) => {
+      button.addEventListener("click", () => this.close());
+    });
 
-    if (this.confirmBtn) {
-      this.confirmBtn.addEventListener("click", (e) => this.handleConfirm(e));
-    }
+    this.overlay.addEventListener("click", (e) => {
+      if (e.target === this.overlay) this.close();
+    });
 
     document.addEventListener("keydown", (e) => {
       if (
@@ -36,37 +40,48 @@ class GoodrPopup {
         this.close();
       }
     });
+
+    this.trackEvent("modal_view");
   }
 
   show() {
     this.container.classList.add("gdr-modal--active");
-    this.overlay.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
   }
 
   close() {
     this.container.classList.add("gdr-modal--closing");
-
     setTimeout(() => {
       this.container.classList.remove(
         "gdr-modal--active",
         "gdr-modal--closing",
       );
-      this.overlay.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      sessionStorage.setItem(this.storageKey, "true");
-    }, 400);
+      sessionStorage.setItem(`goodr-modal-dismissed-${this.sectionId}`, "true");
+    }, 300);
+
+    this.trackEvent("modal_dismiss");
   }
 
-  handleConfirm(e) {
-    e.preventDefault();
-    const shopUrl = this.confirmBtn.getAttribute("href") || "/collections/all";
-    sessionStorage.setItem(this.storageKey, "true");
-    window.location.href = shopUrl;
+  trackEvent(eventName, eventData = {}) {
+    // TODO: Integrate with analytics service
+    // Examples:
+    // - Google Analytics 4: gtag('event', eventName, eventData)
+    // - Segment: analytics.track(eventName, eventData)
+    // - Custom webhook: fetch('/api/analytics', { method: 'POST', body: JSON.stringify({...}) })
+
+    const payload = {
+      event: eventName,
+      section_id: this.sectionId,
+      timestamp: new Date().toISOString(),
+      ...eventData,
+    };
+
+    console.log("Analytics Event:", payload);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.querySelector(".gdr-modal");
-  if (popup) new GoodrPopup(popup);
+  if (popup) {
+    new GoodrPopup(popup).init();
+  }
 });
