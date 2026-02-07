@@ -9,17 +9,22 @@
  */
 {
   "sections": {
-    "goodr_modal_tBahK3": {
+    "hello_world_hkxCRf": {
+      "type": "hello-world",
+      "name": "Hello World Template",
+      "settings": {}
+    },
+    "goodr_modal_LX64T4": {
       "type": "goodr-modal",
       "blocks": {
-        "hero_mtqPNy": {
+        "hero_RrarFG": {
           "type": "hero",
           "settings": {
             "modal_logo_alt": "Modal Logo",
             "modal_image_alt": "Modal Image"
           }
         },
-        "description_EUQfc8": {
+        "description_XfXmNh": {
           "type": "description",
           "settings": {
             "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
@@ -27,43 +32,44 @@
             "code_text_color": "#e06287"
           }
         },
-        "button_ghzghm": {
+        "button_e7Ypm4": {
           "type": "button",
           "settings": {
             "button_type": "confirm",
-            "button_text": "Shop all styles",
-            "button_link": "shopify://collections",
-            "button_color": "#ede939",
-            "text_color": "#ffffff",
+            "button_text": "shop all styles",
+            "button_link": "",
+            "button_color": "#EDE939",
+            "text_color": "#FFFFFF",
             "font_style": "gdr-modal__button--uppercase"
           }
         },
-        "button_ghJD3j": {
+        "button_HHEJm6": {
           "type": "button",
           "settings": {
             "button_type": "dismiss",
-            "button_text": "Nah, I Hate Deals",
+            "button_text": "NAH, I HATE DEALS",
             "button_link": "",
-            "button_color": "#0c2340",
-            "text_color": "#ffffff",
-            "font_style": "gdr-modal__button--uppercase"
+            "button_color": "#333333",
+            "text_color": "#FFFFFF",
+            "font_style": "gdr-modal__button--regular"
           }
         }
       },
       "block_order": [
-        "hero_mtqPNy",
-        "description_EUQfc8",
-        "button_ghzghm",
-        "button_ghJD3j"
+        "hero_RrarFG",
+        "description_XfXmNh",
+        "button_e7Ypm4",
+        "button_HHEJm6"
       ],
       "name": "goodr Modal",
       "settings": {
-        "delay_time": 1,
-        "test_mode": false
+        "delay_time": 2,
+        "test_mode": true
       }
     }
   },
   "order": [
-    "goodr_modal_tBahK3"
+    "hello_world_hkxCRf",
+    "goodr_modal_LX64T4"
   ]
 }
