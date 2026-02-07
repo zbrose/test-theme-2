@@ -23,7 +23,6 @@ class GoodrPopup {
 
     this.closeBtn.addEventListener("click", () => this.close());
 
-    // Handle dismiss buttons
     this.dismissButtons.forEach((button) => {
       button.addEventListener("click", () => this.close());
     });
@@ -84,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const isEnabled = modalElement.dataset.enabled === "true";
   const isTestMode = modalElement.classList.contains("gdr-modal--test-mode");
 
-  // Only initialize if modal is enabled OR in test mode
   if (isEnabled || isTestMode) {
     const popup = document.querySelector(".gdr-modal");
     if (popup) {
