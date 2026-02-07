@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
-    },
     "goodr_modal_tBahK3": {
       "type": "goodr-modal",
       "blocks": {
@@ -68,7 +64,6 @@
     }
   },
   "order": [
-    "main",
     "goodr_modal_tBahK3"
   ]
 }
