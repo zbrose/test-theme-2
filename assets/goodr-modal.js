@@ -80,8 +80,17 @@ class GoodrPopup {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const popup = document.querySelector(".gdr-modal");
-  if (popup) {
-    new GoodrPopup(popup).init();
+  const modalElement = document.querySelector("[data-section-id]");
+  const isEnabled = modalElement.dataset.enabled === "true";
+  const isTestMode = modalElement.classList.contains("gdr-modal--test-mode");
+
+  // Only initialize if modal is enabled OR in test mode
+  if (isEnabled || isTestMode) {
+    const popup = document.querySelector(".gdr-modal");
+    if (popup) {
+      new GoodrPopup(popup).init();
+    }
+  } else {
+    modalElement.style.display = "none";
   }
 });

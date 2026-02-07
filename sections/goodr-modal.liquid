@@ -4,6 +4,7 @@
   class='gdr-modal {% if section.settings.test_mode %}gdr-modal--test-mode{% endif %}'
   data-section-id='{{ section.id }}'
   data-delay='{{ section.settings.delay_time }}'
+  data-enabled='{{ section.settings.modal_enabled }}'
   role='region'
 >
   <div class='gdr-modal__overlay' aria-hidden='true' data-modal-overlay>
@@ -52,6 +53,13 @@
 {
   "name": "goodr Modal",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "modal_enabled",
+      "label": "Enable Modal",
+      "default": true,
+      "info": "Toggle this to show or hide the modal sitewide"
+    },
     {
       "type": "header",
       "content": "Advanced Settings"
