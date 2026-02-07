@@ -170,16 +170,32 @@
           "info": "Only used for Confirm button type"
         },
         {
-          "type": "color",
+          "type": "select",
           "id": "button_color",
-          "label": "Background Color",
-          "default": "#EDE939"
+          "label": "Button Color",
+          "options": [
+            { "value": "#0c2340", "label": "goodr Navy" },
+            { "value": "#EDE939", "label": "goodr Yellow" },
+            { "value": "#e06287", "label": "goodr Pink" },
+            { "value": "#69C0B1", "label": "goodr Teal" },
+            { "value": "#FFFFFF", "label": "White" },
+            { "value": "#000000", "label": "Black" }
+          ],
+          "default": "#000000"
         },
         {
-          "type": "color",
+          "type": "select",
           "id": "text_color",
           "label": "Text Color",
-          "default": "#FFFFFF"
+          "options": [
+            { "value": "#0c2340", "label": "goodr Navy" },
+            { "value": "#EDE939", "label": "goodr Yellow" },
+            { "value": "#e06287", "label": "goodr Pink" },
+            { "value": "#69C0B1", "label": "goodr Teal" },
+            { "value": "#FFFFFF", "label": "White" },
+            { "value": "#000000", "label": "Black" }
+          ],
+          "default": "#000000"
         },
         {
           "type": "select",
@@ -187,7 +203,6 @@
           "label": "Font Style",
           "options": [
             { "value": "gdr-modal__button--regular", "label": "Regular" },
-            { "value": "gdr-modal__button--bold", "label": "Bold" },
             { "value": "gdr-modal__button--uppercase", "label": "Uppercase" }
           ],
           "default": "gdr-modal__button--regular"
