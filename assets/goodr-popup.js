@@ -1,4 +1,4 @@
-class GoodrPopup {
+export class GoodrPopup {
   constructor(container) {
     this.container = container;
     this.overlay = container.querySelector(".gdr-popup__overlay");
