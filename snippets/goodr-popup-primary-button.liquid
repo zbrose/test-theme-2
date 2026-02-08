@@ -5,8 +5,8 @@
 {%- assign border_radius = block.settings.border_radius | default: 4 -%}
 
 <button
-  class='gdr-modal__button gdr-modal__button--primary {{ block.settings.font_style }}'
-  data-modal-button='button'
+  class='gdr-popup__button gdr-popup__button--primary {{ block.settings.font_style }}'
+  data-popup-button='button'
   data-button-text='{{ button_text | escape }}'
   style='
     --primary-color: {{ primary_color }};
@@ -20,10 +20,10 @@
 </button>
 
 {% javascript %}
-  document.querySelectorAll('[data-modal-button="button"]').forEach((button) => {
+  document.querySelectorAll('[data-popup-button="button"]').forEach((button) => {
     button.addEventListener('click', function () {
       const buttonText = this.getAttribute('data-button-text');
-      console.log('Analytics Event: modal_primary_button', {
+      console.log('Analytics Event: popup_primary_button', {
         button_text: buttonText,
       });
     });

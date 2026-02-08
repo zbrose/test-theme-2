@@ -1,6 +1,17 @@
 {
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.10.0",
-    "prettier": "^3.8.1"
+    "@testing-library/dom": "^10.4.1",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.1",
+    "vitest": "^4.0.18"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@testing-library/user-event": "^14.6.1"
   }
 }
