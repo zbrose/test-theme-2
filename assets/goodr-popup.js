@@ -1,4 +1,4 @@
-export class Goodrpopup {
+export class GoodrPopup {
   constructor(container) {
     this.container = container;
     this.overlay = container.querySelector(".gdr-popup__overlay");
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (isEnabled || isTestMode) {
     const popup = document.querySelector(".gdr-popup");
     if (popup) {
-      new Goodrpopup(popup).init();
+      new GoodrPopup(popup).init();
     }
   } else {
     popupElement.style.display = "none";

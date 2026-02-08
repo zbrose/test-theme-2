@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
-import { Goodrpopup } from "../assets/goodr-popup.js";
+import { GoodrPopup } from "../assets/goodr-popup.js";
 
-describe("Goodrpopup Focus Trap", () => {
+describe("GoodrPopup Focus Trap", () => {
   let container;
   let user;
 
@@ -27,7 +27,7 @@ describe("Goodrpopup Focus Trap", () => {
   });
 
   it("should wrap focus from last element to first element on Tab", async () => {
-    const popup = new Goodrpopup(container);
+    const popup = new GoodrPopup(container);
     popup.init();
     popup.show();
     // Run timers so the show()'s setTimeout for focus finishes
@@ -48,7 +48,7 @@ describe("Goodrpopup Focus Trap", () => {
   });
 
   it("should wrap focus from first element to last element on Shift+Tab", async () => {
-    const popup = new Goodrpopup(container);
+    const popup = new GoodrPopup(container);
     popup.init();
     popup.show();
     vi.runOnlyPendingTimers();
