@@ -13,71 +13,9 @@
       "type": "hello-world",
       "name": "Hello World Template",
       "settings": {}
-    },
-    "goodr_popup_MiV8ba": {
-      "type": "goodr-popup",
-      "blocks": {
-        "hero_bnT4NT": {
-          "type": "hero",
-          "settings": {
-            "popup_logo_alt": "popup Logo",
-            "popup_image_alt": "popup Image"
-          }
-        },
-        "description_jWUgVP": {
-          "type": "description",
-          "name": "Description",
-          "settings": {
-            "popup_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
-            "description_text_color": "#0c2340",
-            "discount_code": "GOODR5",
-            "code_text_color": "#e06287"
-          }
-        },
-        "button_L9pP9b": {
-          "type": "button",
-          "name": "Primary Button",
-          "settings": {
-            "button_type": "primary",
-            "button_text": "SHOP ALL STYLES",
-            "text_color": "#FFFFFF",
-            "primary_color": "#EDE939",
-            "secondary_color": "#0c2340",
-            "border_radius": 20,
-            "font_style": "gdr-popup__button--regular"
-          }
-        },
-        "button_XAG6TV": {
-          "type": "button",
-          "name": "Secondary Button",
-          "settings": {
-            "button_type": "secondary",
-            "button_text": "NAH, I HATE DEALS",
-            "text_color": "#0c2340",
-            "primary_color": "#000000",
-            "secondary_color": "#FFFFFF",
-            "border_radius": 20,
-            "font_style": "gdr-popup__button--regular"
-          }
-        }
-      },
-      "block_order": [
-        "hero_bnT4NT",
-        "description_jWUgVP",
-        "button_L9pP9b",
-        "button_XAG6TV"
-      ],
-      "name": "Goodr Popup",
-      "settings": {
-        "popup_enabled": true,
-        "popup_background_color": "#FFFFFF",
-        "delay_time": 2,
-        "test_mode": false
-      }
     }
   },
   "order": [
-    "hello_world_hkxCRf",
-    "goodr_popup_MiV8ba"
+    "hello_world_hkxCRf"
   ]
 }
