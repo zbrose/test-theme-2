@@ -1,7 +1,6 @@
 class GoodrPopup {
   constructor(container) {
     this.container = container;
-    this.overlay = container.querySelector(".gdr-popup__overlay");
     this.closeBtn = container.querySelector(".gdr-popup__close-btn");
     this.dismissButtons = container.querySelectorAll("[data-popup-close]");
     this.sectionId = container.getAttribute("data-section-id");
@@ -29,10 +28,6 @@ class GoodrPopup {
 
     this.dismissButtons.forEach((button) => {
       button.addEventListener("click", () => this.close());
-    });
-
-    this.overlay.addEventListener("click", (e) => {
-      if (e.target === this.overlay) this.close();
     });
 
     document.addEventListener("keydown", (e) => {
@@ -69,17 +64,14 @@ class GoodrPopup {
   }
 
   show() {
-    // Store the current focus to return to it later
     this.previousFocus = document.activeElement;
 
     this.container.classList.add("gdr-popup--active");
 
-    // Move focus into the popup (to the close button or first focusable)
     const firstFocusable = this.container.querySelectorAll(
       this.focusableElements,
     )[0];
     if (firstFocusable) {
-      // Small timeout ensures the element is visible/paintable before focusing
       setTimeout(() => firstFocusable.focus(), 10);
     }
   }
@@ -94,7 +86,6 @@ class GoodrPopup {
       );
       sessionStorage.setItem(`goodr-popup-dismissed-${this.sectionId}`, "true");
 
-      // Return focus to the button that opened the popup
       if (this.previousFocus) {
         this.previousFocus.focus();
       }
