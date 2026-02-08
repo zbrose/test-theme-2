@@ -13,9 +13,73 @@
       "type": "hello-world",
       "name": "Hello World Template",
       "settings": {}
+    },
+    "goodr_popup_H7LTWa": {
+      "type": "goodr-popup",
+      "blocks": {
+        "hero_Rk9q6b": {
+          "type": "hero",
+          "settings": {
+            "popup_logo_alt": "popup Logo",
+            "popup_image_alt": "popup Image"
+          }
+        },
+        "description_tDWQUL": {
+          "type": "description",
+          "name": "Description",
+          "settings": {
+            "popup_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
+            "description_text_color": "#0c2340",
+            "discount_code": "GOODR5",
+            "code_text_color": "#e06287"
+          }
+        },
+        "button_mRWmzm": {
+          "type": "button",
+          "name": "Link Button",
+          "settings": {
+            "button_type": "link",
+            "button_text": "SHOP ALL STYLES",
+            "link_url": "",
+            "text_color": "#FFFFFF",
+            "primary_color": "#EDE939",
+            "secondary_color": "#0c2340",
+            "border_radius": 20,
+            "font_style": "gdr-popup__button--regular"
+          }
+        },
+        "button_UMAgTg": {
+          "type": "button",
+          "name": "Secondary Button",
+          "settings": {
+            "button_type": "secondary",
+            "button_text": "NAH, I HATE DEALS",
+            "link_url": "",
+            "text_color": "#0c2340",
+            "primary_color": "#000000",
+            "secondary_color": "#FFFFFF",
+            "border_radius": 20,
+            "font_style": "gdr-popup__button--regular"
+          }
+        }
+      },
+      "block_order": [
+        "hero_Rk9q6b",
+        "description_tDWQUL",
+        "button_mRWmzm",
+        "button_UMAgTg"
+      ],
+      "name": "Goodr Popup",
+      "settings": {
+        "popup_enabled": true,
+        "popup_background_color": "#FFFFFF",
+        "delay_time": 2,
+        "test_mode": true
+      }
     }
   },
   "order": [
-    "hello_world_hkxCRf"
+    "hello_world_hkxCRf",
+    "goodr_popup_H7LTWa"
   ]
 }
