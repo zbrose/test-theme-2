@@ -207,7 +207,6 @@
           "type": "url",
           "id": "link_url",
           "label": "Link URL",
-          "default": "https://www.goodr.com/collections/all",
           "visible_if": "{{ block.settings.button_type == 'link' }}"
         },
         {
@@ -242,7 +241,7 @@
             { "value": "#000000", "label": "Black" }
           ],
           "default": "#000000",
-          "visible_if": "{{ block.settings.button_type == 'primary' || block.settings.button_type == 'link' }}"
+          "visible_if": "{{ block.settings.button_type == 'primary' or block.settings.button_type == 'link' }}"
         },
         {
           "type": "select",
@@ -257,7 +256,7 @@
             { "value": "#000000", "label": "Black" }
           ],
           "default": "#FFFFFF",
-          "visible_if": "{{ block.settings.button_type == 'primary' || block.settings.button_type == 'link' }}"
+          "visible_if": "{{ block.settings.button_type == 'primary' or block.settings.button_type == 'link' }}"
         },
         {
           "type": "range",
@@ -268,7 +267,7 @@
           "step": 1,
           "unit": "px",
           "default": 20,
-          "visible_if": "{{ block.settings.button_type == 'primary' || block.settings.button_type == 'link' }}"
+          "visible_if": "{{ block.settings.button_type == 'primary' or block.settings.button_type == 'link' }}"
         },
         {
           "type": "select",
