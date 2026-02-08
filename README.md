@@ -4,9 +4,41 @@ Welcome to the goodr popup (official)! This is a reuseable popup component devel
 
 ## Features
 
-### Animated Open/Close
+### Open/Close on Delay
 
-![Alt text for the image](/assets/show.gif "Optional title text")
+Popup opens and closes on a timed delay that can be customized wiithin the SHopify Editor. An overlay focuses the popup with a dark background.
+
+![popup gif](/assets/show.gif)
+
+### Desktop/Mobile Responsive
+
+The popup is fully responsive on desktop and mobile platforms.
+
+![popup gif](/assets/responsive.gif)
+
+### Composable Design
+
+Design the popup of your dreams with movable blocks allowing users to reuse and customize the popup's layout.
+
+![popup gif](/assets/composable.gif)
+
+### Customizable Settings
+
+Go even in the editor to customize color schemes, images, text and more.
+
+![popup gif](/assets/customize.gif)
+
+### Accessible
+
+An implemented focus trap allows screen readers to interact with focusable elements without getting lost in the background noise.
+
+![popup gif](/assets/focus.gif)
+
+### Persisted Session Storage
+
+Popup state is stored within session storage and won't reappear unless the user opens a new tab or window.
+
+![popup gif](/assets/session.gif)
 
 ## Installation
 

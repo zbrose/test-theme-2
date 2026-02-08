@@ -69,12 +69,12 @@ class GoodrPopup {
     this.container.classList.add("gdr-popup--active");
     sessionStorage.setItem(`goodr-popup-shown-${this.sectionId}`, "true");
 
-    // const firstFocusable = this.container.querySelectorAll(
-    //   this.focusableElements,
-    // )[0];
-    // if (firstFocusable) {
-    //   setTimeout(() => firstFocusable.focus(), 10);
-    // }
+    const firstFocusable = this.container.querySelectorAll(
+      this.focusableElements,
+    )[0];
+    if (firstFocusable) {
+      setTimeout(() => firstFocusable.focus(), 10);
+    }
   }
 
   close() {
