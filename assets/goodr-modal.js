@@ -1,4 +1,4 @@
-export class GoodrModal {
+class GoodrModal {
   constructor(container) {
     this.container = container;
     this.overlay = container.querySelector(".gdr-modal__overlay");
