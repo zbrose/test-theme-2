@@ -2,10 +2,10 @@
 {%- assign text_color = block.settings.text_color | default: '#0c2340' -%}
 
 <button
-  class='gdr-modal__button gdr-modal__button--secondary {{ block.settings.font_style }}'
+  class='gdr-popup__button gdr-popup__button--secondary {{ block.settings.font_style }}'
   type='button'
-  data-modal-close
-  data-modal-button='secondary'
+  data-popup-close
+  data-popup-button='secondary'
   data-button-text='{{ button_text | escape }}'
   style='--text-color: {{ text_color }};'
   {{ block.shopify_attributes }}
@@ -14,10 +14,10 @@
 </button>
 
 {% javascript %}
-  document.querySelectorAll('[data-modal-button="secondary"]').forEach((button) => {
+  document.querySelectorAll('[data-popup-button="secondary"]').forEach((button) => {
     button.addEventListener('click', function () {
       const buttonText = this.getAttribute('data-button-text');
-      console.log('Analytics Event: modal_secondary_button', {
+      console.log('Analytics Event: popup_secondary_button', {
         button_text: buttonText,
       });
     });

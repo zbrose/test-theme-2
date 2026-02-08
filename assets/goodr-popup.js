@@ -1,9 +1,9 @@
-export class GoodrModal {
+export class Goodrpopup {
   constructor(container) {
     this.container = container;
-    this.overlay = container.querySelector(".gdr-modal__overlay");
-    this.closeBtn = container.querySelector(".gdr-modal__close-btn");
-    this.dismissButtons = container.querySelectorAll("[data-modal-close]");
+    this.overlay = container.querySelector(".gdr-popup__overlay");
+    this.closeBtn = container.querySelector(".gdr-popup__close-btn");
+    this.dismissButtons = container.querySelectorAll("[data-popup-close]");
     this.sectionId = container.getAttribute("data-section-id");
 
     this.previousFocus = null;
@@ -15,10 +15,10 @@ export class GoodrModal {
     const delayTime =
       parseInt(this.container.getAttribute("data-delay")) * 1000;
     const isTestMode = this.container.classList.contains(
-      "gdr-modal--test-mode",
+      "gdr-popup--test-mode",
     );
     const isDismissed = sessionStorage.getItem(
-      `goodr-modal-dismissed-${this.sectionId}`,
+      `goodr-popup-dismissed-${this.sectionId}`,
     );
 
     if (!isDismissed || isTestMode) {
@@ -36,7 +36,7 @@ export class GoodrModal {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (!this.container.classList.contains("gdr-modal--active")) return;
+      if (!this.container.classList.contains("gdr-popup--active")) return;
 
       if (e.key === "Escape") {
         this.close();
@@ -47,7 +47,7 @@ export class GoodrModal {
       }
     });
 
-    this.trackEvent("modal_view");
+    this.trackEvent("popup_view");
   }
 
   handleFocusTrap(e) {
@@ -72,9 +72,9 @@ export class GoodrModal {
     // Store the current focus to return to it later
     this.previousFocus = document.activeElement;
 
-    this.container.classList.add("gdr-modal--active");
+    this.container.classList.add("gdr-popup--active");
 
-    // Move focus into the modal (to the close button or first focusable)
+    // Move focus into the popup (to the close button or first focusable)
     const firstFocusable = this.container.querySelectorAll(
       this.focusableElements,
     )[0];
@@ -85,22 +85,22 @@ export class GoodrModal {
   }
 
   close() {
-    this.container.classList.add("gdr-modal--closing");
+    this.container.classList.add("gdr-popup--closing");
 
     setTimeout(() => {
       this.container.classList.remove(
-        "gdr-modal--active",
-        "gdr-modal--closing",
+        "gdr-popup--active",
+        "gdr-popup--closing",
       );
-      sessionStorage.setItem(`goodr-modal-dismissed-${this.sectionId}`, "true");
+      sessionStorage.setItem(`goodr-popup-dismissed-${this.sectionId}`, "true");
 
-      // Return focus to the button that opened the modal
+      // Return focus to the button that opened the popup
       if (this.previousFocus) {
         this.previousFocus.focus();
       }
     }, 300);
 
-    this.trackEvent("modal_dismiss");
+    this.trackEvent("popup_dismiss");
   }
 
   trackEvent(eventName, eventData = {}) {
@@ -122,16 +122,16 @@ export class GoodrModal {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const modalElement = document.querySelector(".gdr-modal[data-section-id]");
-  const isEnabled = modalElement.dataset.enabled === "true";
-  const isTestMode = modalElement.classList.contains("gdr-modal--test-mode");
+  const popupElement = document.querySelector(".gdr-popup[data-section-id]");
+  const isEnabled = popupElement.dataset.enabled === "true";
+  const isTestMode = popupElement.classList.contains("gdr-popup--test-mode");
 
   if (isEnabled || isTestMode) {
-    const modal = document.querySelector(".gdr-modal");
-    if (modal) {
-      new GoodrModal(modal).init();
+    const popup = document.querySelector(".gdr-popup");
+    if (popup) {
+      new Goodrpopup(popup).init();
     }
   } else {
-    modalElement.style.display = "none";
+    popupElement.style.display = "none";
   }
 });

@@ -1,6 +1,6 @@
-# The OFFICIAL goodr Modal
+# The OFFICIAL goodr popup
 
-Welcome to the goodr modal (official)! This is a reuseable modal component developed by the goodr team to take hassle out of developing your own modal/pop-up from scratch.
+Welcome to the goodr popup (official)! This is a reuseable popup component developed by the goodr team to take hassle out of developing your own popup/pop-up from scratch.
 
 ## Installation
 
@@ -18,17 +18,17 @@ Welcome to the goodr modal (official)! This is a reuseable modal component devel
    git clone <repository-url>
 
    # Or manually copy the files
-   cp -r goodr-modal/sections/* your-theme/sections/
-   cp -r goodr-modal/assets/* your-theme/assets/
+   cp -r goodr-popup/sections/* your-theme/sections/
+   cp -r goodr-popup/assets/* your-theme/assets/
    ```
 
-2. **Add the modal section to your theme** by including it in your Liquid template:
+2. **Add the popup section to your theme** by including it in your Liquid template:
 
    ```liquid
-   {% section 'goodr-modal' %}
+   {% section 'goodr-popup' %}
    ```
 
-3. **Configure the modal** using Shopify Theme Editor or by editing the section's schema settings
+3. **Configure the popup** using Shopify Theme Editor or by editing the section's schema settings
 
 4. **Test locally** using Shopify CLI:
    ```bash
@@ -41,10 +41,10 @@ Welcome to the goodr modal (official)! This is a reuseable modal component devel
 .
 ├── README.md                # This file
 ├── sections/
-│   └── goodr-modal.liquid  # Main Liquid component
+│   └── goodr-popup.liquid  # Main Liquid component
 └── assets/
-    ├── goodr-modal.css      # Styling
-    └── goodr-modal.js       # Interactivity
+    ├── goodr-popup.css      # Styling
+    └── goodr-popup.js       # Interactivity
 ```
 
 ## Usage
@@ -54,14 +54,14 @@ Welcome to the goodr modal (official)! This is a reuseable modal component devel
 Add the section to your theme and configure via the Shopify Theme Editor or directly in your template:
 
 ```liquid
-{% section 'goodr-modal' %}
+{% section 'goodr-popup' %}
 ```
 
 ### Customization
 
-Refer to the schema settings in [sections/goodr-modal.liquid](sections/goodr-modal.liquid) to customize:
+Refer to the schema settings in [sections/goodr-popup.liquid](sections/goodr-popup.liquid) to customize:
 
-- Modal title and content
+- popup title and content
 - Trigger button text
 - Styling and animations
 - Close behavior
@@ -70,7 +70,7 @@ Refer to the schema settings in [sections/goodr-modal.liquid](sections/goodr-mod
 
 ### Assumptions
 
-- **Single modal per page**: This component is optimized for a single modal instance per page load
+- **Single popup per page**: This component is optimized for a single popup instance per page load
 - **Modern browser support**: Uses ES6+ JavaScript; targets browsers with ES2015+ support
 - **Liquid templating**: Assumes usage within a Shopify theme with Liquid templating engine
 - **CSS scope**: Assumes no conflicting global CSS selectors
@@ -89,7 +89,7 @@ Refer to the schema settings in [sections/goodr-modal.liquid](sections/goodr-mod
 
 - [ ] **Accessibility enhancements**: Full WCAG 2.1 AA compliance, improved keyboard navigation
 - [ ] **Unit tests**: Add test coverage for JavaScript functionality
-- [ ] **Performance optimization**: Lazy load modal assets until first interaction
+- [ ] **Performance optimization**: Lazy load popup assets until first interaction
 
 ### Medium Priority
 
@@ -101,7 +101,7 @@ Refer to the schema settings in [sections/goodr-modal.liquid](sections/goodr-mod
 ### Low Priority
 
 - [ ] **Internationalization (i18n)**: Multi-language label support
-- [ ] **Analytics integration**: Built-in event tracking for modal interactions
+- [ ] **Analytics integration**: Built-in event tracking for popup interactions
 - [ ] **Advanced styling**: CSS-in-JS or SCSS preprocessing support
 - [ ] **Mobile gestures**: Swipe-to-close and gesture detection
 

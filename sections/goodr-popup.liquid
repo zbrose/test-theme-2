@@ -1,25 +1,25 @@
-{{ 'goodr-modal.css' | asset_url | stylesheet_tag }}
+{{ 'goodr-popup.css' | asset_url | stylesheet_tag }}
 
 <div
-  class='gdr-modal {% if section.settings.test_mode %}gdr-modal--test-mode{% endif %}'
+  class='gdr-popup {% if section.settings.test_mode %}gdr-popup--test-mode{% endif %}'
   data-section-id='{{ section.id }}'
   data-delay='{{ section.settings.delay_time }}'
-  data-enabled='{{ section.settings.modal_enabled }}'
+  data-enabled='{{ section.settings.popup_enabled }}'
   role='region'
 >
-  <div class='gdr-modal__overlay' data-modal-overlay>
+  <div class='gdr-popup__overlay' data-popup-overlay>
     <div
-      class='gdr-modal__content'
+      class='gdr-popup__content'
       role='dialog'
-      aria-modal='true'
-      aria-labelledby='modal-title'
-      aria-describedby='modal-description'
-      style='--modal-background: {{ section.settings.modal_background_color }};'
+      aria-popup='true'
+      aria-labelledby='popup-title'
+      aria-describedby='popup-description'
+      style='--popup-background: {{ section.settings.popup_background_color }};'
     >
-      <button class='gdr-modal__close-btn' aria-label='Close modal' data-modal-close>
+      <button class='gdr-popup__close-btn' aria-label='Close popup' data-popup-close>
         <img
           src='{{ 'x.svg' | asset_url }}'
-          class='gdr-modal__close-icon'
+          class='gdr-popup__close-icon'
           alt=''
           loading='eager'
           width='20'
@@ -31,16 +31,16 @@
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'hero' %}
-            {%- render 'goodr-modal-block-hero', block: block -%}
+            {%- render 'goodr-popup-block-hero', block: block -%}
 
           {% when 'description' %}
-            {%- render 'goodr-modal-block-description', block: block -%}
+            {%- render 'goodr-popup-block-description', block: block -%}
 
           {% when 'button' %}
             {% if block.settings.button_type == 'secondary' %}
-              {%- render 'goodr-modal-secondary-button', block: block -%}
+              {%- render 'goodr-popup-secondary-button', block: block -%}
             {% else %}
-              {%- render 'goodr-modal-primary-button', block: block -%}
+              {%- render 'goodr-popup-primary-button', block: block -%}
             {% endif %}
         {% endcase %}
       {% endfor %}
@@ -48,23 +48,23 @@
   </div>
 </div>
 
-<script src='{{ 'goodr-modal.js' | asset_url }}' defer></script>
+<script src='{{ 'goodr-popup.js' | asset_url }}' defer></script>
 
 {% schema %}
 {
-  "name": "goodr Modal",
+  "name": "goodr popup",
   "settings": [
     {
       "type": "checkbox",
-      "id": "modal_enabled",
-      "label": "Enable Modal",
+      "id": "popup_enabled",
+      "label": "Enable popup",
       "default": true,
-      "info": "Toggle this to show or hide the modal sitewide"
+      "info": "Toggle this to show or hide the popup sitewide"
     },
     {
       "type": "select",
-      "id": "modal_background_color",
-      "label": "Modal Background Color",
+      "id": "popup_background_color",
+      "label": "popup Background Color",
       "options": [
         { "value": "#0c2340", "label": "goodr Navy" },
         { "value": "#EDE939", "label": "goodr Yellow" },
@@ -94,7 +94,7 @@
       "id": "test_mode",
       "label": "Force Open (Test Mode)",
       "default": false,
-      "info": "Check this to keep the modal open while you style it in the editor"
+      "info": "Check this to keep the popup open while you style it in the editor"
     }
   ],
   "blocks": [
@@ -105,30 +105,30 @@
       "settings": [
         {
           "type": "image_picker",
-          "id": "modal_logo",
+          "id": "popup_logo",
           "label": "Logo"
         },
         {
           "type": "text",
-          "id": "modal_logo_alt",
+          "id": "popup_logo_alt",
           "label": "Logo Alt Text",
-          "default": "Modal Logo"
+          "default": "popup Logo"
         },
         {
           "type": "image_picker",
-          "id": "modal_image",
+          "id": "popup_image",
           "label": "Desktop Image"
         },
         {
           "type": "image_picker",
-          "id": "modal_image_mobile",
+          "id": "popup_image_mobile",
           "label": "Mobile Image (Optional)"
         },
         {
           "type": "text",
-          "id": "modal_image_alt",
+          "id": "popup_image_alt",
           "label": "Image Alt Text",
-          "default": "Modal Image"
+          "default": "popup Image"
         }
       ]
     },
@@ -138,7 +138,7 @@
       "settings": [
         {
           "type": "text",
-          "id": "modal_description",
+          "id": "popup_description",
           "label": "Description",
           "default": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
           "info": "Max 50 characters. Use [code] as a placeholder for the discount code"
@@ -265,17 +265,17 @@
           "id": "font_style",
           "label": "Font Style",
           "options": [
-            { "value": "gdr-modal__button--regular", "label": "Regular" },
-            { "value": "gdr-modal__button--uppercase", "label": "Uppercase" }
+            { "value": "gdr-popup__button--regular", "label": "Regular" },
+            { "value": "gdr-popup__button--uppercase", "label": "Uppercase" }
           ],
-          "default": "gdr-modal__button--regular"
+          "default": "gdr-popup__button--regular"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "goodr Modal",
+      "name": "goodr popup",
       "category": "Popup",
       "blocks": [
         {
@@ -285,7 +285,7 @@
           "type": "description",
           "name": "Description",
           "settings": {
-            "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
+            "popup_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
             "discount_code": "GOODR5",
             "code_text_color": "#e06287"
           }
