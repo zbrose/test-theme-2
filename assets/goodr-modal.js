@@ -69,16 +69,17 @@ export class GoodrModal {
   }
 
   show() {
+    // Store the current focus to return to it later
     this.previousFocus = document.activeElement;
+
     this.container.classList.add("gdr-modal--active");
 
-    // ADD THIS: Prevent background scrolling
-    document.body.style.overflow = "hidden";
-
+    // Move focus into the modal (to the close button or first focusable)
     const firstFocusable = this.container.querySelectorAll(
       this.focusableElements,
     )[0];
     if (firstFocusable) {
+      // Small timeout ensures the element is visible/paintable before focusing
       setTimeout(() => firstFocusable.focus(), 10);
     }
   }
@@ -93,9 +94,7 @@ export class GoodrModal {
       );
       sessionStorage.setItem(`goodr-modal-dismissed-${this.sectionId}`, "true");
 
-      // ADD THIS: Restore background scrolling
-      document.body.style.overflow = "";
-
+      // Return focus to the button that opened the modal
       if (this.previousFocus) {
         this.previousFocus.focus();
       }
@@ -122,39 +121,17 @@ export class GoodrModal {
   }
 }
 
-const initModal = (container) => {
-  const isEnabled = container.dataset.enabled === "true";
-  const isTestMode = container.classList.contains("gdr-modal--test-mode");
-
-  if (isEnabled || isTestMode) {
-    // We check if an instance is already attached to avoid double-init
-    if (!container.dataset.initialized) {
-      new GoodrPopup(container).init();
-      container.dataset.initialized = "true";
-    }
-  } else {
-    container.style.display = "none";
-  }
-};
-
-// 1. Standard Page Load
 document.addEventListener("DOMContentLoaded", () => {
   const modalElement = document.querySelector(".gdr-modal[data-section-id]");
-  if (modalElement) initModal(modalElement);
-});
+  const isEnabled = modalElement.dataset.enabled === "true";
+  const isTestMode = modalElement.classList.contains("gdr-modal--test-mode");
 
-// 2. Shopify Theme Editor Support
-document.addEventListener("shopify:section:load", (event) => {
-  // Find the modal inside the section that just loaded
-  const modalElement = event.target.querySelector(".gdr-modal");
-  if (modalElement) initModal(modalElement);
-});
-
-document.addEventListener("shopify:section:select", (event) => {
-  // Force show the modal when the merchant clicks on the section in the sidebar
-  const modalElement = event.target.querySelector(".gdr-modal");
-  if (modalElement) {
-    // You'd add a method to your class to 'forceOpen' without delay/storage checks
-    // e.g., modalInstance.show();
+  if (isEnabled || isTestMode) {
+    const modal = document.querySelector(".gdr-modal");
+    if (modal) {
+      new GoodrModal(modal).init();
+    }
+  } else {
+    modalElement.style.display = "none";
   }
 });
