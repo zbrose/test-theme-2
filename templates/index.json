@@ -14,17 +14,17 @@
       "name": "Hello World Template",
       "settings": {}
     },
-    "goodr_popup_QkY3Yi": {
+    "goodr_popup_MiV8ba": {
       "type": "goodr-popup",
       "blocks": {
-        "hero_LUN9EG": {
+        "hero_bnT4NT": {
           "type": "hero",
           "settings": {
             "popup_logo_alt": "popup Logo",
             "popup_image_alt": "popup Image"
           }
         },
-        "description_B7qnch": {
+        "description_jWUgVP": {
           "type": "description",
           "name": "Description",
           "settings": {
@@ -34,7 +34,7 @@
             "code_text_color": "#e06287"
           }
         },
-        "button_WDkEVK": {
+        "button_L9pP9b": {
           "type": "button",
           "name": "Primary Button",
           "settings": {
@@ -47,7 +47,7 @@
             "font_style": "gdr-popup__button--regular"
           }
         },
-        "button_7XYcMN": {
+        "button_XAG6TV": {
           "type": "button",
           "name": "Secondary Button",
           "settings": {
@@ -62,12 +62,12 @@
         }
       },
       "block_order": [
-        "hero_LUN9EG",
-        "description_B7qnch",
-        "button_WDkEVK",
-        "button_7XYcMN"
+        "hero_bnT4NT",
+        "description_jWUgVP",
+        "button_L9pP9b",
+        "button_XAG6TV"
       ],
-      "name": "goodr popup",
+      "name": "Goodr Popup",
       "settings": {
         "popup_enabled": true,
         "popup_background_color": "#FFFFFF",
@@ -78,6 +78,6 @@
   },
   "order": [
     "hello_world_hkxCRf",
-    "goodr_popup_QkY3Yi"
+    "goodr_popup_MiV8ba"
   ]
 }
