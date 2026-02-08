@@ -166,6 +166,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .gdr-popup__button--primary:hover {
