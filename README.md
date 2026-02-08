@@ -2,11 +2,13 @@
 
 Welcome to the goodr popup (official)! This is a reuseable popup component developed by the goodr team to take hassle out of developing your own popup/pop-up from scratch.
 
+<img src="./assets/desktop.png" width="200" /> <img src="./assets/mobile.png" width="165" />
+
 ## Features
 
 ### Open/Close on Delay
 
-Popup opens and closes on a timed delay that can be customized wiithin the SHopify Editor. An overlay focuses the popup with a dark background.
+Popup opens and closes on a timed delay that can be customized wiithin the Shopify Editor. An overlay focuses the popup with a slightly darker background.
 
 ![popup gif](/assets/show.gif)
 
@@ -24,7 +26,7 @@ Design the popup of your dreams with movable blocks allowing users to reuse and 
 
 ### Customizable Settings
 
-Go even in the editor to customize color schemes, images, text and more.
+Go even further into your inner artist and customize color schemes, images, text and more in editor.
 
 ![popup gif](/assets/customize.gif)
 
@@ -131,19 +133,3 @@ Refer to the schema settings in [sections/goodr-popup.liquid](sections/goodr-pop
 - [ ] **Analytics integration**: Built-in event tracking for popup interactions
 - [ ] **Advanced styling**: CSS-in-JS or SCSS preprocessing support
 - [ ] **Mobile gestures**: Swipe-to-close and gesture detection
-
-## Contributing
-
-To contribute improvements:
-
-1. Create a feature branch
-2. Test thoroughly in a Shopify development store
-3. Submit a pull request with a detailed description
-
-## License
-
-© goodr. All rights reserved.
-
-## Support
-
-For issues or questions, please refer to the Shopify Theme Development documentation or contact the development team.
