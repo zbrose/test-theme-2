@@ -74,12 +74,9 @@
         "popup_enabled": true,
         "popup_background_color": "#FFFFFF",
         "delay_time": 2,
-        "test_mode": true
+        "test_mode": false
       }
     }
   },
-  "order": [
-    "hello_world_hkxCRf",
-    "goodr_popup_H7LTWa"
-  ]
+  "order": ["hello_world_hkxCRf", "goodr_popup_H7LTWa"]
 }
