@@ -72,7 +72,7 @@
         "modal_enabled": true,
         "modal_background_color": "#FFFFFF",
         "delay_time": 2,
-        "test_mode": true
+        "test_mode": false
       }
     }
   },
