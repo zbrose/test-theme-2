@@ -36,10 +36,10 @@
             {%- render 'goodr-modal-block-description', block: block -%}
 
           {% when 'button' %}
-            {% if block.settings.button_type == 'confirm' %}
-              {%- render 'goodr-modal-button-confirm', block: block -%}
+            {% if block.settings.button_type == 'secondary' %}
+              {%- render 'goodr-modal-secondary-button', block: block -%}
             {% else %}
-              {%- render 'goodr-modal-button-dismiss', block: block -%}
+              {%- render 'goodr-modal-primary-button', block: block -%}
             {% endif %}
         {% endcase %}
       {% endfor %}
@@ -136,10 +136,18 @@
           "info": "Max 10 characters. This will replace the [code] placeholder in the description."
         },
         {
-          "type": "color",
+          "type": "select",
           "id": "code_text_color",
           "label": "Code Text Color",
-          "default": "#e06287"
+          "options": [
+            { "value": "#0c2340", "label": "goodr Navy" },
+            { "value": "#EDE939", "label": "goodr Yellow" },
+            { "value": "#e06287", "label": "goodr Pink" },
+            { "value": "#69C0B1", "label": "goodr Teal" },
+            { "value": "#FFFFFF", "label": "White" },
+            { "value": "#000000", "label": "Black" }
+          ],
+          "default": "#0c2340"
         }
       ]
     },
@@ -152,36 +160,16 @@
           "id": "button_type",
           "label": "Button Type",
           "options": [
-            { "value": "confirm", "label": "Confirm (Link)" },
-            { "value": "dismiss", "label": "Dismiss (Close Modal)" }
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" }
           ],
-          "default": "confirm"
+          "default": "primary"
         },
         {
           "type": "text",
           "id": "button_text",
           "label": "Button Text",
           "default": "Button"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button Link",
-          "info": "Only used for Confirm button type"
-        },
-        {
-          "type": "select",
-          "id": "button_color",
-          "label": "Button Color",
-          "options": [
-            { "value": "#0c2340", "label": "goodr Navy" },
-            { "value": "#EDE939", "label": "goodr Yellow" },
-            { "value": "#e06287", "label": "goodr Pink" },
-            { "value": "#69C0B1", "label": "goodr Teal" },
-            { "value": "#FFFFFF", "label": "White" },
-            { "value": "#000000", "label": "Black" }
-          ],
-          "default": "#000000"
         },
         {
           "type": "select",
@@ -195,7 +183,53 @@
             { "value": "#FFFFFF", "label": "White" },
             { "value": "#000000", "label": "Black" }
           ],
-          "default": "#000000"
+          "default": "#0c2340"
+        },
+        {
+          "type": "header",
+          "content": "Primary Style Settings",
+          "info": "These settings only apply to Primary buttons"
+        },
+        {
+          "type": "select",
+          "id": "primary_color",
+          "label": "Primary Color",
+          "options": [
+            { "value": "#0c2340", "label": "goodr Navy" },
+            { "value": "#EDE939", "label": "goodr Yellow" },
+            { "value": "#e06287", "label": "goodr Pink" },
+            { "value": "#69C0B1", "label": "goodr Teal" },
+            { "value": "#FFFFFF", "label": "White" },
+            { "value": "#000000", "label": "Black" }
+          ],
+          "default": "#000000",
+          "visible_if": "{{ block.settings.button_type == 'primary' }}"
+        },
+        {
+          "type": "select",
+          "id": "secondary_color",
+          "label": "Secondary Color",
+          "options": [
+            { "value": "#0c2340", "label": "goodr Navy" },
+            { "value": "#EDE939", "label": "goodr Yellow" },
+            { "value": "#e06287", "label": "goodr Pink" },
+            { "value": "#69C0B1", "label": "goodr Teal" },
+            { "value": "#FFFFFF", "label": "White" },
+            { "value": "#000000", "label": "Black" }
+          ],
+          "default": "#FFFFFF",
+          "visible_if": "{{ block.settings.button_type == 'primary' }}"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "label": "Border Radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "default": 20,
+          "visible_if": "{{ block.settings.button_type == 'primary' }}"
         },
         {
           "type": "select",
@@ -224,19 +258,23 @@
         },
         {
           "type": "button",
+          "name": "Primary Button",
           "settings": {
-            "button_type": "confirm",
+            "button_type": "primary",
             "button_text": "SHOP ALL STYLES",
-            "button_link": "/collections/all",
-            "button_color": "#EDE939",
-            "text_color": "#FFFFFF"
+            "primary_color": "#EDE939",
+            "text_color": "#FFFFFF",
+            "secondary_color": "#0c2340",
+            "border_radius": 20
           }
         },
         {
           "type": "button",
+          "name": "Secondary Button",
           "settings": {
-            "button_type": "dismiss",
-            "button_text": "NAH, I HATE DEALS"
+            "button_type": "secondary",
+            "button_text": "NAH, I HATE DEALS",
+            "text_color": "#0c2340"
           }
         }
       ]
