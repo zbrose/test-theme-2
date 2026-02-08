@@ -1,4 +1,4 @@
-class GoodrPopup {
+export class GoodrModal {
   constructor(container) {
     this.container = container;
     this.overlay = container.querySelector(".gdr-modal__overlay");
@@ -69,17 +69,16 @@ class GoodrPopup {
   }
 
   show() {
-    // Store the current focus to return to it later
     this.previousFocus = document.activeElement;
-
     this.container.classList.add("gdr-modal--active");
 
-    // Move focus into the modal (to the close button or first focusable)
+    // ADD THIS: Prevent background scrolling
+    document.body.style.overflow = "hidden";
+
     const firstFocusable = this.container.querySelectorAll(
       this.focusableElements,
     )[0];
     if (firstFocusable) {
-      // Small timeout ensures the element is visible/paintable before focusing
       setTimeout(() => firstFocusable.focus(), 10);
     }
   }
@@ -94,7 +93,9 @@ class GoodrPopup {
       );
       sessionStorage.setItem(`goodr-modal-dismissed-${this.sectionId}`, "true");
 
-      // Return focus to the button that opened the modal
+      // ADD THIS: Restore background scrolling
+      document.body.style.overflow = "";
+
       if (this.previousFocus) {
         this.previousFocus.focus();
       }
@@ -121,17 +122,39 @@ class GoodrPopup {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const modalElement = document.querySelector(".gdr-modal[data-section-id]");
-  const isEnabled = modalElement.dataset.enabled === "true";
-  const isTestMode = modalElement.classList.contains("gdr-modal--test-mode");
+const initModal = (container) => {
+  const isEnabled = container.dataset.enabled === "true";
+  const isTestMode = container.classList.contains("gdr-modal--test-mode");
 
   if (isEnabled || isTestMode) {
-    const popup = document.querySelector(".gdr-modal");
-    if (popup) {
-      new GoodrPopup(popup).init();
+    // We check if an instance is already attached to avoid double-init
+    if (!container.dataset.initialized) {
+      new GoodrPopup(container).init();
+      container.dataset.initialized = "true";
     }
   } else {
-    modalElement.style.display = "none";
+    container.style.display = "none";
+  }
+};
+
+// 1. Standard Page Load
+document.addEventListener("DOMContentLoaded", () => {
+  const modalElement = document.querySelector(".gdr-modal[data-section-id]");
+  if (modalElement) initModal(modalElement);
+});
+
+// 2. Shopify Theme Editor Support
+document.addEventListener("shopify:section:load", (event) => {
+  // Find the modal inside the section that just loaded
+  const modalElement = event.target.querySelector(".gdr-modal");
+  if (modalElement) initModal(modalElement);
+});
+
+document.addEventListener("shopify:section:select", (event) => {
+  // Force show the modal when the merchant clicks on the section in the sidebar
+  const modalElement = event.target.querySelector(".gdr-modal");
+  if (modalElement) {
+    // You'd add a method to your class to 'forceOpen' without delay/storage checks
+    // e.g., modalInstance.show();
   }
 });
