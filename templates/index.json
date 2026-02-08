@@ -14,55 +14,63 @@
       "name": "Hello World Template",
       "settings": {}
     },
-    "goodr_modal_LX64T4": {
+    "goodr_modal_RLXmcN": {
       "type": "goodr-modal",
       "blocks": {
-        "hero_RrarFG": {
+        "hero_nRwDbp": {
           "type": "hero",
           "settings": {
             "modal_logo_alt": "Modal Logo",
             "modal_image_alt": "Modal Image"
           }
         },
-        "description_XfXmNh": {
+        "description_BYyqy9": {
           "type": "description",
+          "name": "Description",
           "settings": {
             "modal_description": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
+            "description_text_color": "#0c2340",
             "discount_code": "GOODR5",
             "code_text_color": "#e06287"
           }
         },
-        "button_e7Ypm4": {
+        "button_yQJp3B": {
           "type": "button",
+          "name": "Primary Button",
           "settings": {
-            "button_type": "confirm",
-            "button_text": "shop all styles",
-            "button_link": "",
-            "button_color": "#EDE939",
+            "button_type": "primary",
+            "button_text": "SHOP ALL STYLES",
             "text_color": "#FFFFFF",
-            "font_style": "gdr-modal__button--uppercase"
+            "primary_color": "#EDE939",
+            "secondary_color": "#0c2340",
+            "border_radius": 20,
+            "font_style": "gdr-modal__button--regular"
           }
         },
-        "button_HHEJm6": {
+        "button_BhBHBg": {
           "type": "button",
+          "name": "Secondary Button",
           "settings": {
-            "button_type": "dismiss",
+            "button_type": "secondary",
             "button_text": "NAH, I HATE DEALS",
-            "button_link": "",
-            "button_color": "#333333",
-            "text_color": "#FFFFFF",
+            "text_color": "#0c2340",
+            "primary_color": "#000000",
+            "secondary_color": "#FFFFFF",
+            "border_radius": 20,
             "font_style": "gdr-modal__button--regular"
           }
         }
       },
       "block_order": [
-        "hero_RrarFG",
-        "description_XfXmNh",
-        "button_e7Ypm4",
-        "button_HHEJm6"
+        "hero_nRwDbp",
+        "description_BYyqy9",
+        "button_yQJp3B",
+        "button_BhBHBg"
       ],
       "name": "goodr Modal",
       "settings": {
+        "modal_enabled": true,
+        "modal_background_color": "#FFFFFF",
         "delay_time": 2,
         "test_mode": true
       }
@@ -70,6 +78,6 @@
   },
   "order": [
     "hello_world_hkxCRf",
-    "goodr_modal_LX64T4"
+    "goodr_modal_RLXmcN"
   ]
 }
