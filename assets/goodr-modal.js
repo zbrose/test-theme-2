@@ -79,7 +79,7 @@ class GoodrPopup {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const modalElement = document.querySelector("[data-section-id]");
+  const modalElement = document.querySelector(".gdr-modal[data-section-id]");
   const isEnabled = modalElement.dataset.enabled === "true";
   const isTestMode = modalElement.classList.contains("gdr-modal--test-mode");
 
