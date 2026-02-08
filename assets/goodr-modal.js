@@ -5,6 +5,10 @@ class GoodrPopup {
     this.closeBtn = container.querySelector(".gdr-modal__close-btn");
     this.dismissButtons = container.querySelectorAll("[data-modal-close]");
     this.sectionId = container.getAttribute("data-section-id");
+
+    this.previousFocus = null;
+    this.focusableElements =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
   }
 
   init() {
@@ -32,29 +36,68 @@ class GoodrPopup {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (
-        e.key === "Escape" &&
-        this.container.classList.contains("gdr-modal--active")
-      ) {
+      if (!this.container.classList.contains("gdr-modal--active")) return;
+
+      if (e.key === "Escape") {
         this.close();
+      }
+
+      if (e.key === "Tab") {
+        this.handleFocusTrap(e);
       }
     });
 
     this.trackEvent("modal_view");
   }
 
+  handleFocusTrap(e) {
+    const focusables = this.container.querySelectorAll(this.focusableElements);
+    const firstElement = focusables[0];
+    const lastElement = focusables[focusables.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      }
+    } else {
+      if (document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    }
+  }
+
   show() {
+    // Store the current focus to return to it later
+    this.previousFocus = document.activeElement;
+
     this.container.classList.add("gdr-modal--active");
+
+    // Move focus into the modal (to the close button or first focusable)
+    const firstFocusable = this.container.querySelectorAll(
+      this.focusableElements,
+    )[0];
+    if (firstFocusable) {
+      // Small timeout ensures the element is visible/paintable before focusing
+      setTimeout(() => firstFocusable.focus(), 10);
+    }
   }
 
   close() {
     this.container.classList.add("gdr-modal--closing");
+
     setTimeout(() => {
       this.container.classList.remove(
         "gdr-modal--active",
         "gdr-modal--closing",
       );
       sessionStorage.setItem(`goodr-modal-dismissed-${this.sectionId}`, "true");
+
+      // Return focus to the button that opened the modal
+      if (this.previousFocus) {
+        this.previousFocus.focus();
+      }
     }, 300);
 
     this.trackEvent("modal_dismiss");
