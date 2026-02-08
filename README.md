@@ -2,7 +2,7 @@
 
 Welcome to the goodr popup (official)! This is a reuseable popup component developed by the goodr team to take hassle out of developing your own popup/pop-up from scratch.
 
-## Features
+## Featuress
 
 ## Installation
 
