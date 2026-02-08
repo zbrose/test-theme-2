@@ -14,6 +14,7 @@
       aria-modal='true'
       aria-labelledby='modal-title'
       aria-describedby='modal-description'
+      style='--modal-background: {{ section.settings.modal_background_color }};'
     >
       <button class='gdr-modal__close-btn' aria-label='Close modal' data-modal-close>
         <img
@@ -59,6 +60,20 @@
       "label": "Enable Modal",
       "default": true,
       "info": "Toggle this to show or hide the modal sitewide"
+    },
+    {
+      "type": "select",
+      "id": "modal_background_color",
+      "label": "Modal Background Color",
+      "options": [
+        { "value": "#0c2340", "label": "goodr Navy" },
+        { "value": "#EDE939", "label": "goodr Yellow" },
+        { "value": "#e06287", "label": "goodr Pink" },
+        { "value": "#69C0B1", "label": "goodr Teal" },
+        { "value": "#FFFFFF", "label": "White" },
+        { "value": "#000000", "label": "Black" }
+      ],
+      "default": "#FFFFFF"
     },
     {
       "type": "header",
@@ -127,6 +142,20 @@
           "label": "Description",
           "default": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
           "info": "Max 50 characters. Use [code] as a placeholder for the discount code"
+        },
+        {
+          "type": "select",
+          "id": "description_text_color",
+          "label": "Description Text Color",
+          "options": [
+            { "value": "#0c2340", "label": "goodr Navy" },
+            { "value": "#EDE939", "label": "goodr Yellow" },
+            { "value": "#e06287", "label": "goodr Pink" },
+            { "value": "#69C0B1", "label": "goodr Teal" },
+            { "value": "#FFFFFF", "label": "White" },
+            { "value": "#000000", "label": "Black" }
+          ],
+          "default": "#0c2340"
         },
         {
           "type": "text",
@@ -248,7 +277,6 @@
     {
       "name": "goodr Modal",
       "category": "Popup",
-
       "blocks": [
         {
           "type": "hero"

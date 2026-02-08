@@ -2,10 +2,10 @@
 
 /* 1. Base Variables */
 .gdr-modal {
-  --modal-navy: #0c2340;
-  --modal-pink: #e06287;
-  --modal-yellow: #ede939;
-  --goodr-shadow: -4px 4px var(--modal-navy);
+  --goodr-navy: #0c2340;
+  --goodr-pink: #e06287;
+  --goodr-yellow: #ede939;
+  --goodr-shadow: -4px 4px var(--goodr-navy);
   --goodr-font: "Noto Sans", sans-serif;
   visibility: hidden;
 }
@@ -52,13 +52,15 @@
 }
 
 .gdr-modal__content {
+  --modal-background: var(--background-color, #ffffff);
+
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   font-family: var(--goodr-font);
   position: relative;
-  background: #ffffff;
-  border: 3px solid var(--modal-navy);
+  background-color: var(--modal-background);
+  border: 3px solid var(--goodr-navy);
   border-radius: 8px;
   text-align: center;
   width: 100%;
@@ -114,13 +116,15 @@
 
 /* 4. Text Styles */
 .gdr-modal__description {
+  --description-color: var(--goodr-navy, #000000);
+
   font-weight: 700;
   font-size: 24px;
-  color: var(--modal-navy);
+  color: var(--description-color);
 }
 
 .gdr-modal__discount-code {
-  color: var(--modal-pink);
+  color: var(--goodr-pink);
   font-weight: 700;
 }
 
@@ -215,7 +219,7 @@
   .gdr-modal__content {
     padding: 35px 37px;
     max-width: 326px;
-    --goodr-shadow: -2.75px 2.75px var(--modal-navy);
+    --goodr-shadow: -2.75px 2.75px var(--goodr-navy);
   }
 
   .gdr-modal__hero {

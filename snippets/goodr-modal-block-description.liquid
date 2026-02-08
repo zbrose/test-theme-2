@@ -15,5 +15,11 @@
 -%}
 
 {%- if formatted_description != blank -%}
-  <p class='gdr-modal__description' {{ block.shopify_attributes }}>{{ formatted_description }}</p>
+  <p
+    class='gdr-modal__description'
+    {{ block.shopify_attributes }}
+    style='--description-color: {{ block.settings.description_text_color }};'
+  >
+    {{ formatted_description }}
+  </p>
 {%- endif -%}
