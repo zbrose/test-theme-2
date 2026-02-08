@@ -16,11 +16,11 @@ class GoodrPopup {
     const isTestMode = this.container.classList.contains(
       "gdr-popup--test-mode",
     );
-    const isDismissed = sessionStorage.getItem(
-      `goodr-popup-dismissed-${this.sectionId}`,
+    const isShown = sessionStorage.getItem(
+      `goodr-popup-shown-${this.sectionId}`,
     );
 
-    if (!isDismissed || isTestMode) {
+    if (!isShown || isTestMode) {
       setTimeout(() => this.show(), delayTime);
     }
 
@@ -67,6 +67,7 @@ class GoodrPopup {
     this.previousFocus = document.activeElement;
 
     this.container.classList.add("gdr-popup--active");
+    sessionStorage.setItem(`goodr-popup-shown-${this.sectionId}`, "true");
 
     const firstFocusable = this.container.querySelectorAll(
       this.focusableElements,
@@ -84,7 +85,6 @@ class GoodrPopup {
         "gdr-popup--active",
         "gdr-popup--closing",
       );
-      sessionStorage.setItem(`goodr-popup-dismissed-${this.sectionId}`, "true");
 
       if (this.previousFocus) {
         this.previousFocus.focus();
