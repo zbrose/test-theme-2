@@ -1,4 +1,4 @@
-# The OFFICIAL goodr popup
+# The goodr popup
 
 Welcome to the goodr popup (official)! This is a reuseable popup component developed by the goodr team to take hassle out of developing your own popup/pop-up from scratch.
 
@@ -30,7 +30,7 @@ Go even further into your inner artist and customize color schemes, images, text
 
 ![popup gif](/assets/customize.gif)
 
-### Accessible
+### Accessible Focus Trap
 
 An implemented focus trap allows screen readers to interact with focusable elements without getting lost in the background noise.
 
@@ -41,6 +41,14 @@ An implemented focus trap allows screen readers to interact with focusable eleme
 Popup state is stored within session storage and won't reappear unless the user opens a new tab or window.
 
 ![popup gif](/assets/session.gif)
+
+## Technology & Methodologies
+
+**CSS / BEM Methodology:** Leverages the Block, Element, Modifier convention to maintain a modular class structure. This ensures encapsulated styles and prevents global CSS leakage.
+
+**Object-Oriented JavaScript:** A dedicated JS class manages the logic and heavy functional lifting of the popup.
+
+**Liquid Templating:** Utilizes Liquid markup and conditional rendering to deliver dynamic content tailored to the user's settings.
 
 ## Installation
 
@@ -61,7 +69,7 @@ Popup state is stored within session storage and won't reappear unless the user 
 
    # Or manually copy the files and place them within the corresponding directories
    cp -r goodr-popup/sections/* your-theme/sections/
-   cp -r goodr-popup/assets/* your-theme/assets/
+   cp -r goodr-popup/snippets/* your-theme/snippets/
    cp -r goodr-popup/assets/* your-theme/assets/
    ```
 
@@ -88,7 +96,7 @@ Add the section to your theme and configure via the Shopify Theme Editor or dire
 
 ### Customization
 
-Refer to the schema settings in [sections/goodr-popup.liquid](sections/goodr-popup.liquid) to customize:
+Refer to the schema settings in [sections/goodr-popup.liquid](sections/goodr-popup.liquid) to customize or add the popup section to a theme in the Shopify Theme editor.
 
 - Popup color and text
 - Trigger button text
@@ -106,30 +114,15 @@ Refer to the schema settings in [sections/goodr-popup.liquid](sections/goodr-pop
 
 ### Tradeoffs
 
-- **No framework dependencies**: Built with vanilla JavaScript to minimize bundle size, but lacks some advanced state management features
-- **Limited animation options**: Pre-defined animations to keep CSS lightweight; custom animations require CSS knowledge
-- **Accessibility basics**: Includes ARIA attributes but may need enhancement for complex use cases
-- **Browser compatibility**: Does not support Internet Explorer 11; targets modern browsers only
 - **Responsive design**: Mobile-first approach may require theme-specific adjustments
+- **Theming**: Current theme capabilites only includes styles and colors from goodr brand
+- **Limited Settings**: Basic settings are included for customization and more developement is required to extend
 
 ## Future Improvements
 
-### High Priority
-
-- [ ] **Accessibility enhancements**: Full WCAG 2.1 AA compliance, improved keyboard navigation
-- [ ] **Unit tests**: Add test coverage for JavaScript functionality
-- [ ] **Performance optimization**: Lazy load popup assets until first interaction
-
-### Medium Priority
-
-- [ ] **Animation presets**: Expand animation library with fade, slide, scale variants
-- [ ] **TypeScript migration**: Add type safety to JavaScript code
-- [ ] **Configuration API**: Expose JavaScript API for programmatic control
-- [ ] **Theme customization**: Support Shopify Theme Settings for font, color customization
-
-### Low Priority
-
-- [ ] **Internationalization (i18n)**: Multi-language label support
-- [ ] **Analytics integration**: Built-in event tracking for popup interactions
-- [ ] **Advanced styling**: CSS-in-JS or SCSS preprocessing support
-- [ ] **Mobile gestures**: Swipe-to-close and gesture detection
+- **Animation presets**: Expand animation library with fade, slide, scale variants
+- **TypeScript migration**: Add type safety to JavaScript code
+- **Theme customization**: Support Shopify Theme Settings for font, color customization
+- **Internationalization (i18n)**: Multi-language label support
+- **Analytics integration**: Built-in event tracking for popup interactions
+- **Advanced styling**: CSS-in-JS or SCSS preprocessing support
