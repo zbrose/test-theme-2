@@ -190,6 +190,8 @@
   overflow: hidden;
   white-space: nowrap;
   color: var(--text-color);
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 2px;
 }
 
 .gdr-popup__button--secondary:hover {

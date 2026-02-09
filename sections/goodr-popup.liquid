@@ -1,22 +1,3 @@
-{% comment %}
-  Component: Goodr Popup Section
-  Description: A modular, schema-driven popup with conditional test modes and dynamic block rendering.
-
-  Methodologies:
-    - CSS: BEM (Block Element Modifier) for encapsulation.
-    - JS: Data-attribute driven initialization (requires GoodrPopup JS class).
-
-  Data Attributes (JS Hooks):
-    - [data-section-id]: Unique identifier for instance-specific logic.
-    - [data-delay]: Milliseconds to wait before auto-triggering.
-    - [data-enabled]: Boolean flag to toggle feature without removing code.
-    - [data-popup-overlay]: Target for "click-to-close" functionality.
-    - [data-popup-close]: Trigger for manual close buttons.
-
-  CSS Variables:
-    - --popup-background: Controlled via section settings for real-time styling updates.
-{% endcomment %}
-
 {{ 'goodr-popup.css' | asset_url | stylesheet_tag }}
 
 <div
@@ -160,8 +141,7 @@
           "type": "text",
           "id": "popup_description",
           "label": "Description",
-          "default": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER",
-          "info": "Max 50 characters. Use [code] as a placeholder for the discount code"
+          "default": "USE CODE [code] FOR $5 OFF YOUR FIRST ORDER"
         },
         {
           "type": "select",
@@ -181,8 +161,7 @@
           "type": "text",
           "id": "discount_code",
           "label": "Discount Code",
-          "default": "GOODR5",
-          "info": "Max 10 characters. This will replace the [code] placeholder in the description."
+          "default": "GOODR5"
         },
         {
           "type": "select",

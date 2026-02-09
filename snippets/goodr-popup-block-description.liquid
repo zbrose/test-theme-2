@@ -1,7 +1,3 @@
-{%- comment -%}
-  Description Block: Displays description text with a dynamic discount code injector.
-{%- endcomment -%}
-
 {%- liquid
   assign raw_code = block.settings.discount_code | slice: 0, 15
   assign raw_desc = block.settings.popup_description | default: 'USE CODE [code] FOR $5 OFF YOUR FIRST ORDER'

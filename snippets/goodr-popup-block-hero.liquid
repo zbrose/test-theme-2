@@ -1,13 +1,10 @@
-{%- comment -%}
-  Hero Block: Displays logo and background images (desktop/mobile)
-{%- endcomment -%}
+{%- liquid
+  assign logo_alt = block.settings.popup_logo.alt | default: block.settings.popup_logo_alt | default: 'Logo'
+  assign desktop_alt = block.settings.popup_image.alt | default: block.settings.popup_image_alt | default: 'Hero Image'
+  assign mobile_alt = block.settings.popup_image_mobile.alt | default: desktop_alt
+-%}
 
 <div class='gdr-popup__hero' {{ block.shopify_attributes }}>
-  {%- liquid
-    assign logo_alt = block.settings.popup_logo.alt | default: block.settings.popup_logo_alt
-    assign main_alt = block.settings.popup_image.alt | default: block.settings.popup_image_alt
-  -%}
-
   {%- if block.settings.popup_logo -%}
     {{
       block.settings.popup_logo
@@ -18,21 +15,20 @@
     <img
       src='{{ 'goodr_logo_white.svg' | asset_url }}'
       class='gdr-popup__logo'
-      alt='Logo'
+      alt='{{ logo_alt }}'
       loading='eager'
       width='200'
-      height='auto'
+      height='50'
     >
   {%- endif -%}
 
-  {%- comment -%} Desktop Background {%- endcomment -%}
   {%- if block.settings.popup_image -%}
     {{
       block.settings.popup_image
       | image_url: width: 1000
       | image_tag:
         class: 'gdr-popup__image gdr-popup__image--desktop',
-        alt: main_alt,
+        alt: desktop_alt,
         loading: 'eager',
         widths: '484, 748, 1000'
     }}
@@ -42,19 +38,18 @@
       class='gdr-popup__image gdr-popup__image--desktop'
       alt='Desktop Background'
       loading='eager'
-      width='100%'
-      height='auto'
+      width='484'
+      height='484'
     >
   {%- endif -%}
 
-  {%- comment -%} Mobile Background {%- endcomment -%}
   {%- if block.settings.popup_image_mobile -%}
     {{
       block.settings.popup_image_mobile
       | image_url: width: 600
       | image_tag:
         class: 'gdr-popup__image gdr-popup__image--mobile',
-        alt: main_alt,
+        alt: mobile_alt,
         loading: 'eager',
         widths: '326, 600'
     }}
@@ -62,16 +57,16 @@
     {{
       block.settings.popup_image
       | image_url: width: 600
-      | image_tag: class: 'gdr-popup__image gdr-popup__image--mobile', alt: main_alt, loading: 'eager'
+      | image_tag: class: 'gdr-popup__image gdr-popup__image--mobile', alt: mobile_alt, loading: 'eager'
     }}
   {%- else -%}
     <img
       src='{{ 'mobile_popup_img.png' | asset_url }}'
       class='gdr-popup__image gdr-popup__image--mobile'
-      alt='Mobile Background'
+      alt='{{ mobile_alt }}'
       loading='eager'
       width='326'
-      height='auto'
+      height='400'
     >
   {%- endif -%}
 </div>
