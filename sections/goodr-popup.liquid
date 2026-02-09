@@ -1,3 +1,22 @@
+{% comment %}
+  Component: Goodr Popup Section
+  Description: A modular, schema-driven popup with conditional test modes and dynamic block rendering.
+
+  Methodologies:
+    - CSS: BEM (Block Element Modifier) for encapsulation.
+    - JS: Data-attribute driven initialization (requires GoodrPopup JS class).
+
+  Data Attributes (JS Hooks):
+    - [data-section-id]: Unique identifier for instance-specific logic.
+    - [data-delay]: Milliseconds to wait before auto-triggering.
+    - [data-enabled]: Boolean flag to toggle feature without removing code.
+    - [data-popup-overlay]: Target for "click-to-close" functionality.
+    - [data-popup-close]: Trigger for manual close buttons.
+
+  CSS Variables:
+    - --popup-background: Controlled via section settings for real-time styling updates.
+{% endcomment %}
+
 {{ 'goodr-popup.css' | asset_url | stylesheet_tag }}
 
 <div
@@ -27,7 +46,6 @@
         >
       </button>
 
-      {%- comment -%} Render Dynamic Blocks {%- endcomment -%}
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'hero' %}

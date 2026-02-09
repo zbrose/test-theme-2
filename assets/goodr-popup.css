@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* 1. Base Variables */
+/* Base Variables */
 .gdr-popup {
   --goodr-navy: #0c2340;
   --goodr-pink: #e06287;
@@ -29,7 +29,7 @@
   pointer-events: auto;
 }
 
-/* 2. Overlay & Animation Logic */
+/* Overlay & Animation Logic */
 .gdr-popup__overlay {
   display: flex;
   position: fixed;
@@ -85,10 +85,9 @@
   transform: scale(0.9) translateY(20px);
 }
 
-/* 3. Hero & Images (The Swap) */
+/* Hero & Images (The Swap) */
 .gdr-popup__hero {
   position: relative;
-  /* margin-bottom: 1rem; */
 }
 
 .gdr-popup__logo {
@@ -114,7 +113,7 @@
   display: block;
 }
 
-/* 4. Text Styles */
+/* Text Styles */
 .gdr-popup__description {
   --description-color: var(--goodr-navy, #000000);
 
@@ -128,7 +127,7 @@
   font-weight: 700;
 }
 
-/* 5. Buttons & Close Icon */
+/* Buttons & Close Icon */
 .gdr-popup__close-btn {
   position: absolute;
   top: 15px;
@@ -201,7 +200,7 @@
   text-transform: uppercase;
 }
 
-/* 6. Mobile Overrides */
+/* Mobile Overrides */
 @media screen and (max-width: 600px) {
   .gdr-popup__content {
     gap: 1rem;

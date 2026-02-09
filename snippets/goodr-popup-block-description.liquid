@@ -1,20 +1,19 @@
 {%- comment -%}
-  Description Block: Displays description text with optional discount code
+  Description Block: Displays description text with a dynamic discount code injector.
 {%- endcomment -%}
 
 {%- liquid
-  assign code_style = 'color: ' | append: block.settings.code_text_color | append: '; background-color: ' | append: block.settings.code_bg_color | append: ';'
+  assign raw_code = block.settings.discount_code | slice: 0, 15
+  assign raw_desc = block.settings.popup_description | default: 'USE CODE [code] FOR $5 OFF YOUR FIRST ORDER'
 
-  assign limited_code = block.settings.discount_code | slice: 0, 10
-  assign discount_span = '<span class="gdr-popup__discount-code" style="' | append: code_style | append: '">' | append: limited_code | append: '</span>'
+  capture discount_span
+    echo '<span class="gdr-popup__discount-code" style="--code-color: ' | append: block.settings.code_text_color | append: '; --code-bg: ' | append: block.settings.code_bg_color | append: ';">' | append: raw_code | append: '</span>'
+  endcapture
 
-  assign default_text = 'USE CODE [code] FOR $5 OFF YOUR FIRST ORDER'
-  assign description_text = block.settings.popup_description | default: default_text | truncate: 50
-
-  assign formatted_description = description_text | replace: '[code]', discount_span
+  assign formatted_description = raw_desc | replace: '[code]', discount_span
 -%}
 
-{%- if formatted_description != blank -%}
+{%- if raw_desc != blank -%}
   <p
     class='gdr-popup__description'
     {{ block.shopify_attributes }}

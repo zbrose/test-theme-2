@@ -96,10 +96,6 @@ class GoodrPopup {
 
   trackEvent(eventName, eventData = {}) {
     // TODO: Integrate with analytics service
-    // Examples:
-    // - Google Analytics 4: gtag('event', eventName, eventData)
-    // - Segment: analytics.track(eventName, eventData)
-    // - Custom webhook: fetch('/api/analytics', { method: 'POST', body: JSON.stringify({...}) })
 
     const payload = {
       event: eventName,
